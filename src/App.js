@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import styled from 'styled-components';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Sidebar from './components/common/Sidebar';
+// import Button from "./components/common/Button";
+import ButtonIcon from "./components/common/ButtonIcon";
+import Chip from "components/common/Chip";
+import SegmentedControl from "./components/common/SegmentedControl";
+
+const Container = styled.div`
+  //width: 100%;
+  //height: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Center = styled.div`
+  height: 92vh;
+  display: flex;
+  flex-direction: row;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <BrowserRouter>
+            <Center>
+                <Sidebar/>
+                <ButtonIcon>Connect Wallet</ButtonIcon>
+                <Chip>Tag</Chip>
+
+                {/*<Switch>*/}
+                {/*    <Route path={}></Route>*/}
+                {/*</Switch>*/}
+            </Center>
+            <div>
+                <SegmentedControl/>
+            </div>
+
+
+        </BrowserRouter>
   );
 }
 
