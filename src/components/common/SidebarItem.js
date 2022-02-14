@@ -21,7 +21,7 @@ function SidebarItem({ menu, index }) {
 
     return (
         <MenuContainer current={pathname === menu.path}>
-            <NavLink exact to={menu.path} key={index}>
+            <NavLink to={menu.path} key={index}>
                 <p>{menu.name}</p>
             </NavLink>
         </MenuContainer>

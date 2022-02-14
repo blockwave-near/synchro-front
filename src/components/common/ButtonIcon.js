@@ -29,7 +29,7 @@ const IconButton = styled(Button)`
 
 function ButtonIcon(props) {
     return (
-        <IconButton injectFirst variant="contained" startIcon={<Wallet/>} {...props}>
+        <IconButton variant="contained" startIcon={<Wallet/>} {...props}>
             {props.children}
         </IconButton>
     );

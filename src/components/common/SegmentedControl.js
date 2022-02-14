@@ -1,53 +1,39 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import React, {useState} from 'react';
+import {styled} from '@mui/material/styles';
 import TabsUnstyled from '@mui/base/TabsUnstyled';
 import TabsListUnstyled from '@mui/base/TabsListUnstyled';
-import TabPanelUnstyled from '@mui/base/TabPanelUnstyled';
-import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
-import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
+import {buttonUnstyledClasses} from '@mui/base/ButtonUnstyled';
+import TabUnstyled, {tabUnstyledClasses} from '@mui/base/TabUnstyled';
 
-const blue = {
-    50: '#F0F7FF',
-    100: '#C2E0FF',
-    200: '#80BFFF',
-    300: '#66B2FF',
-    400: '#3399FF',
-    500: '#007FFF',
-    600: '#0072E5',
-    700: '#0059B2',
-    800: '#004C99',
-    900: '#003A75',
+const purple = {
+    100: '#8070FF',
+    200: '#5B4EE6',
 };
 
 const Tab = styled(TabUnstyled)`
   color: white;
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
   background-color: transparent;
   width: 100%;
-  padding: 12px 16px;
-  margin: 6px 6px;
-  border: none;
-  border-radius: 100px;
+  height: 30px;
+  margin: 3px 4px;
+  border-radius: 20px;
   display: flex;
+  align-items: center;
   justify-content: center;
 
   &:hover {
-    background-color: ${blue[400]};
-  }
-
-  &:focus {
-    color: #fff;
-    outline: 2px solid ${blue[200]};
-    outline-offset: 2px;
-    border-radius: 100px;
+    background-color: ${purple[100]};
   }
 
   &.${tabUnstyledClasses.selected} {
-    background-color: ${blue[50]};
-    color: ${blue[600]};
-    border-radius: 100px;
+    background-color: white;
+    color: ${purple[200]};
+    border-radius: 20px;
+    font-weight: 700;
+    transition: all 500ms ease-in-out;
   }
 
   &.${buttonUnstyledClasses.disabled} {
@@ -56,34 +42,37 @@ const Tab = styled(TabUnstyled)`
   }
 `;
 
-const TabPanel = styled(TabPanelUnstyled)`
-  width: 100%;
-  font-size: 0.875rem;
-  border-radius: 100px;
-`;
-
 const TabsList = styled(TabsListUnstyled)`
-  min-width: 320px;
-  background-color: ${blue[500]};
-  border-radius: 100px;
-  margin-bottom: 16px;
+  width: 540px;
+  height: 36px;
+  background-color: ${purple[200]};
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: space-between;
 `;
 
-export default function SegmentedControl() {
+function SegmentedControl() {
+    const array = ['Year', 'Month', 'Week', 'Day'];
+    const [value, setValue] = useState("Year");
+
+    const handleChange = (event, newValue) => {
+        setValue(array[newValue]);
+    };
+
+    console.log(value);
+
     return (
-        <TabsUnstyled defaultValue={0}>
+        <TabsUnstyled defaultValue={0} onChange={handleChange}>
             <TabsList>
-                <Tab>One</Tab>
-                <Tab>Two</Tab>
-                <Tab>Three</Tab>
+                <Tab>Year</Tab>
+                <Tab>Month</Tab>
+                <Tab>Week</Tab>
+                <Tab>Day</Tab>
             </TabsList>
-            <TabPanel value={0}>First content</TabPanel>
-            <TabPanel value={1}>Second content</TabPanel>
-            <TabPanel value={2}>Third content</TabPanel>
         </TabsUnstyled>
     );
 }
+
+export default SegmentedControl;

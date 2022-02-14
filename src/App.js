@@ -6,6 +6,7 @@ import Sidebar from './components/common/Sidebar';
 import ButtonIcon from "./components/common/ButtonIcon";
 import Chip from "components/common/Chip";
 import SegmentedControl from "./components/common/SegmentedControl";
+import UnstyledSlider from "./components/common/Slider";
 
 const Container = styled.div`
   //width: 100%;
@@ -27,16 +28,13 @@ function App() {
                 <Sidebar/>
                 <ButtonIcon>Connect Wallet</ButtonIcon>
                 <Chip>Tag</Chip>
+                <SegmentedControl/>
+                <UnstyledSlider/>
 
                 {/*<Switch>*/}
                 {/*    <Route path={}></Route>*/}
                 {/*</Switch>*/}
             </Center>
-            <div>
-                <SegmentedControl/>
-            </div>
-
-
         </BrowserRouter>
   );
 }
