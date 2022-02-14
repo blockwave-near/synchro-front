@@ -19,7 +19,7 @@ const IconButton = styled(Button)`
   font-weight: 600;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(91, 78, 230, 0.25);
+  box-shadow: 0 4px 10px rgba(91, 78, 230, 0.25);
   border-radius: 100px;
 
  &:hover {

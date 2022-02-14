@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {styled, alpha, Box} from '@mui/system';
-import SliderUnstyled from '@mui/base/SliderUnstyled';
 import Slider from '@mui/material/Slider';
 
 
-const StyledSlider = styled(Slider)(({theme}) => `
-    top:100px;
-  color: ${theme.palette.mode === 'light' ? '#5B4EE6' : '#E5E5E5'};
+const StyledSlider = styled(Slider)`
+  top: 100px;
+  color: #5B4EE6;
   height: 20px;
   width: 100%;
   padding: 13px 0;
@@ -48,39 +47,44 @@ const StyledSlider = styled(Slider)(({theme}) => `
     :hover,
     &.Mui-focusVisible {
       box-shadow: 0 0 0 0.25rem ${alpha(
-        theme.palette.mode === 'light' ? '#5B4EE6' : '#8070FF',
-        0.15,
-    )};
+              '#5B4EE6',
+              0.15,
+      )};
     }
 
     &.Mui-active {
       box-shadow: 0 0 0 0.25rem ${alpha(
-        theme.palette.mode === 'light' ? '#5B4EE6' : '#8070FF',
-        0.3,
-    )};
+              '#5B4EE6',
+              0.3,
+      )};
     }
-    
-    & .MuiSlider-valueLabel {
-        line-height: 1.2;
-        font-size: 12px;
-        padding: 0;
-        width: 32px;
-        height: 32px;
-        border-radius: 50% 50% 50% 0;
-        background-color: #5B4EE6;
-        transform-origin: bottom left;
-        transform: translate(50%, -100%) rotate(-45deg) scale(0);
-        &:before { display: none };
-        &.MuiSlider-valueLabelOpen {
-          transform: translate(50%, -100%) rotate(-45deg) scale(1);
-    };
 
-    & > * {
-      transform: rotate(45deg);
+    & .MuiSlider-valueLabel {
+      line-height: 1.2;
+      font-size: 12px;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50% 50% 50% 0;
+      background-color: #5B4EE6;
+      transform-origin: bottom left;
+      transform: translate(50%, -100%) rotate(-45deg) scale(0);
+
+      &:before {
+        display: none
+      }
+    ;
+
+      &.MuiSlider-valueLabelOpen {
+        transform: translate(50%, -100%) rotate(-45deg) scale(1);
+      }
+    ;
+
+      & > * {
+        transform: rotate(45deg);
+      }
     }
-  }
-`,
-);
+`;
 
 export default function UnstyledSlider() {
     return (
