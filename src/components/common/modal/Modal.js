@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import Button from "../Button";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -8,22 +8,30 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import {ReactComponent as CloseIcon} from "assets/ModalClose.svg";
-import Typography from '@mui/material/Typography';
+import InputField from "../InputField";
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-        padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
-    },
-}));
+const BootstrapDialog = styled(Dialog)`
+
+  & .MuiDialog-paper {
+    width: 800px;
+    height: 600px;
+
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
+`
+
+const StyledDialogActions = styled(DialogActions)`
+  display: flex;
+  justify-content: center;
+`
 
 const BootstrapDialogTitle = (props) => {
-    const { children, onClose, ...other } = props;
+    const {children, onClose, ...other} = props;
 
     return (
-        <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+        <DialogTitle sx={{m: 0, p: 2}} {...other}>
             {children}
             {onClose ? (
                 <IconButton
@@ -36,12 +44,44 @@ const BootstrapDialogTitle = (props) => {
                         color: (theme) => theme.palette.grey[500],
                     }}
                 >
-                    <CloseIcon />
+                    <CloseIcon/>
                 </IconButton>
             ) : null}
         </DialogTitle>
     );
 };
+
+const StyledBootstrapDialogTitle = styled(BootstrapDialogTitle)`
+  font-family: 'Work Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+  margin-top: 133px;
+  padding: 0 16px 0 16px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  color: #222222;
+`
+
+const StyledBootstrapDialogContent = styled(DialogContent)`
+  //width: 640px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const TextContainer = styled("div")`
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: right;
+  color: #777777;
+  width: 640px;
+  display: flex;
+  justify-content: space-between;
+
+`
 
 BootstrapDialogTitle.propTypes = {
     children: PropTypes.node,
@@ -68,31 +108,28 @@ function Modal() {
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
                 open={open}
+                maxWidth="false"
             >
-                <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    Modal title
-                </BootstrapDialogTitle>
-                <DialogContent dividers>
-                    <Typography gutterBottom>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
-                        magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
-                        ullamcorper nulla non metus auctor fringilla.
-                    </Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
-                        Save changes
+                <StyledBootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                    Deposit
+                </StyledBootstrapDialogTitle>
+                <StyledBootstrapDialogContent>
+                    <InputField/>
+                    <TextContainer>
+                        <p>Tx Fee</p>
+                        <p>3.678 USDT</p>
+                    </TextContainer>
+
+                    <TextContainer>
+                        <p>Receive Fee</p>
+                        <p>103.678 USDT</p>
+                    </TextContainer>
+                </StyledBootstrapDialogContent>
+                <StyledDialogActions>
+                    <Button autoFocus onClick={handleClose} width="640px" height="72px" fontSize="21px" style={{marginBottom: "50px"}}>
+                        Proceed
                     </Button>
-                </DialogActions>
+                </StyledDialogActions>
             </BootstrapDialog>
         </div>
     );

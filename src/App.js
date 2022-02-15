@@ -9,6 +9,7 @@ import TransitionAlerts from "./components/alert/Alert";
 import Slider from "./components/common/Slider";
 import Card from "./components/borrow/borrowBoard";
 import Modal from "./components/common/modal/Modal";
+import InputField from "./components/common/InputField";
 
 const Container = styled.div`
   height: 100%;
@@ -43,6 +44,7 @@ function App() {
                     <TransitionAlerts>bAssets that have been transferred to Terra through Wormhole (e.g. webETH) must go through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
                     <Card>2127</Card>
                     <Modal/>
+                    <InputField/>
                 </Container>
 
                 {/*<Switch>*/}
