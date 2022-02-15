@@ -3,14 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.button`
-  width: ${(props) => (props.fullWidth ? '100%' : props.width ?? '150px')};
+  width: ${(props) => (props.width ? '100%' : props.width ?? '150px')};
   height: ${(props) => props.height ?? '36px'};
   background: ${(props) => props.background ?? '#25252E'};
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 14px;
   font-weight: 700;
   padding: 10px;
   cursor: pointer;

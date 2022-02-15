@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '@mui/material/Button'; //
 import {ReactComponent as Wallet} from "assets/Wallet.svg";
 import {styled} from "@mui/material/styles"
-// import styled from "styled-components";
 
 const IconButton = styled(Button)`
   width: ${(props) => (props.fullWidth ? '100%' : props.width ?? '172px')};

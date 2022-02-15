@@ -2,21 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Sidebar from './components/common/Sidebar';
-// import Button from "./components/common/Button";
 import ButtonIcon from "./components/common/ButtonIcon";
 import Chip from "components/common/Chip";
 import SegmentedControl from "./components/common/SegmentedControl";
-import UnstyledSlider from "./components/common/Slider";
+import TransitionAlerts from "./components/alert/Alert";
+import Slider from "./components/common/Slider";
+import Card from "./components/borrow/borrowBoard";
+import Modal from "./components/common/modal/Modal";
 
 const Container = styled.div`
-  //width: 100%;
-  //height: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 30px;
 `;
 
 const Center = styled.div`
   height: 92vh;
+  width: 100%;
   display: flex;
   flex-direction: row;
 `
@@ -26,10 +30,20 @@ function App() {
         <BrowserRouter>
             <Center>
                 <Sidebar/>
-                <ButtonIcon>Connect Wallet</ButtonIcon>
-                <Chip>Tag</Chip>
-                <SegmentedControl/>
-                <UnstyledSlider/>
+                <Container>
+                    <ButtonIcon>Connect Wallet</ButtonIcon>
+                    <Chip>Tag</Chip>
+                    <SegmentedControl>
+                        Mint
+                        Burn
+                        test2
+                        test3
+                    </SegmentedControl>
+                    <Slider/>
+                    <TransitionAlerts>bAssets that have been transferred to Terra through Wormhole (e.g. webETH) must go through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
+                    <Card>2127</Card>
+                    <Modal/>
+                </Container>
 
                 {/*<Switch>*/}
                 {/*    <Route path={}></Route>*/}

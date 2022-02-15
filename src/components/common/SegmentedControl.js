@@ -16,7 +16,7 @@ const Tab = styled(TabUnstyled)`
   font-size: 14px;
   font-weight: 600;
   background-color: transparent;
-  width: 100%;
+  width: 130px;
   height: 30px;
   margin: 3px 4px;
   border-radius: 20px;
@@ -43,7 +43,7 @@ const Tab = styled(TabUnstyled)`
 `;
 
 const TabsList = styled(TabsListUnstyled)`
-  width: 540px;
+  width: ${(props) => (props.fullWidth ? '100%' : props.width ?? '540px')};
   height: 36px;
   background-color: ${purple[200]};
   border-radius: 20px;
@@ -53,7 +53,7 @@ const TabsList = styled(TabsListUnstyled)`
   align-content: space-between;
 `;
 
-function SegmentedControl() {
+function SegmentedControl(props) {
     const array = ['Year', 'Month', 'Week', 'Day'];
     const [value, setValue] = useState("Year");
 
@@ -61,15 +61,30 @@ function SegmentedControl() {
         setValue(array[newValue]);
     };
 
-    console.log(value);
+    let newArray = [];
+    newArray.push(props.children.split(' '))
 
     return (
         <TabsUnstyled defaultValue={0} onChange={handleChange}>
             <TabsList>
-                <Tab>Year</Tab>
-                <Tab>Month</Tab>
-                <Tab>Week</Tab>
-                <Tab>Day</Tab>
+                {typeof newArray[0][0] === 'string' &&
+                    <Tab>{newArray[0][0]}</Tab>
+                }
+
+                {typeof newArray[0][1] === 'string' &&
+                    <Tab>{newArray[0][1]}</Tab>
+                }
+
+                {typeof newArray[0][2] === 'string' &&
+                    <Tab>{newArray[0][2]}</Tab>
+                }
+
+                {typeof newArray[0][3] === 'string' &&
+                    <Tab>{newArray[0][3]}</Tab>
+                }
+                {/*<Tab>{newArray[0][1]}</Tab>*/}
+                {/*<Tab>{newArray[0][2]}</Tab>*/}
+                {/*<Tab>{newArray[0][3]}</Tab>*/}
             </TabsList>
         </TabsUnstyled>
     );

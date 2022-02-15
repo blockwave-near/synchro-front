@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {styled, alpha, Box} from '@mui/system';
-import Slider from '@mui/material/Slider';
+import MUISlider from '@mui/material/Slider';
 
 
-const StyledSlider = styled(Slider)`
-  top: 100px;
+const StyledSlider = styled(MUISlider)`
   color: #5B4EE6;
   height: 20px;
   width: 100%;
@@ -21,7 +20,7 @@ const StyledSlider = styled(Slider)`
     width: 100%;
     height: 14px;
     border-radius: 7px;
-    background-color: currentColor;
+    background-color: #E5E5E5;
     opacity: 0.38;
   }
 
@@ -41,7 +40,7 @@ const StyledSlider = styled(Slider)`
     box-sizing: border-box;
     border-radius: 50%;
     outline: 0;
-    border: 2px solid currentColor;
+    //border: 2px solid currentColor;
     background-color: #fff;
 
     :hover,
@@ -86,10 +85,12 @@ const StyledSlider = styled(Slider)`
     }
 `;
 
-export default function UnstyledSlider() {
+function Slider() {
     return (
         <Box sx={{width: 300}}>
-            <StyledSlider valueLabelDisplay="on" defaultValue={0}/>
+            <StyledSlider valueLabelDisplay="auto" defaultValue={0}/>
         </Box>
     );
 }
+export default Slider;
+
