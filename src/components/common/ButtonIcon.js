@@ -12,9 +12,10 @@ const IconButton = styled(Button)`
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
+  text-transform: capitalize;
 
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
   cursor: pointer;

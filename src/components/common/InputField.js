@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-
 import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormHelperText from '@mui/material/FormHelperText';
-import { styled } from '@mui/system';
+import {styled} from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
 
 const blue = {
@@ -28,16 +27,17 @@ const grey = {
 };
 
 const StyledInputElement = styled(FilledInput)`
-  width: 320px;
-  font-size: 0.875rem;
-  font-family: IBM Plex Sans, sans-serif;
+  width: 640px;
+  height: 48px;
   font-weight: 400;
-  line-height: 1.5;
   color: ${grey[900]};
-  background: ${grey[50]};
-  border: 1px solid ${grey[300]};
-  border-radius: 8px;
-  padding: 12px 12px;
+  background: #F5F5F5;
+  border-radius: 10px;
+  padding: 20px;
+
+  .MuiFilledInput-input {
+    padding: 0;
+  }
 
   &:hover {
     background: ${grey[100]};
@@ -49,36 +49,55 @@ const StyledInputElement = styled(FilledInput)`
   }
 `
 
+const StyledInputAdornment = styled(InputAdornment)`
+  p {
+    font-weight: 500;
+    font-size: 18px;
+    color: #C4C4C4;
+  }
+`
+
+const StyledFormHelperText = styled(FormHelperText)`
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #777777;
+  justify-content: flex-end;
+
+  p {
+    text-decoration: underline;
+  }
+`
 
 function InputField() {
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-    });
+    const [values, setValues] = React.useState(0);
+
+    console.log(values);
 
     const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        setValues(event.target.value.replace(/(^0+)/, ""));
     };
 
     return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+        <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
             <div>
                 <FormHelperText id="filled-weight-helper-text">Amount</FormHelperText>
-                <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
+                <FormControl variant="filled">
                     <StyledInputElement
                         id="filled-adornment-weight"
-                        value={values.weight}
-                        onChange={handleChange('weight')}
-                        endAdornment={<InputAdornment position="end">USDT</InputAdornment>}
+                        disableUnderline={true}
+                        value={values.USDT}
+                        type="number"
+                        onChange={handleChange('USDT')}
+                        endAdornment={<StyledInputAdornment position="end">USDT</StyledInputAdornment>}
                         aria-describedby="filled-weight-helper-text"
                         inputProps={{
-                            'aria-label': 'weight',
+                            'aria-label': 'USDT',
                         }}
                     />
                 </FormControl>
+                <StyledFormHelperText id="filled-weight-helper-text">Wallet:&nbsp;<p>{values}</p></StyledFormHelperText>
             </div>
         </Box>
     );
