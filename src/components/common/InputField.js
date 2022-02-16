@@ -73,9 +73,18 @@ const StyledFormHelperText = styled(FormHelperText)`
 function InputField() {
     const [values, setValues] = React.useState(0);
 
+    let formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 3
+    });
+
     console.log(values);
 
     const handleChange = (prop) => (event) => {
+        if (event.target.value.length > 19) {
+            return false;
+        }
         setValues(event.target.value.replace(/(^0+)/, ""));
     };
 
@@ -97,7 +106,9 @@ function InputField() {
                         }}
                     />
                 </FormControl>
-                <StyledFormHelperText id="filled-weight-helper-text">Wallet:&nbsp;<p>{values}</p></StyledFormHelperText>
+                {/*100 -> WalletMaxValue*/}
+                <StyledFormHelperText id="filled-weight-helper-text">Wallet:&nbsp;
+                    <p>{values.length < 19 && formatter.format(values)}</p></StyledFormHelperText>
             </div>
         </Box>
     );
