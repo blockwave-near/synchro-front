@@ -26,7 +26,7 @@ function Components() {
             <SegmentedControl>
                 Mint
                 Burn
-                test2
+                test22
                 test3
             </SegmentedControl>
             <Slider/>

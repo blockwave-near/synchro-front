@@ -65,7 +65,10 @@ function SegmentedControl(props) {
         // console.log(newArray[0][newValue])
         setValue(newArray[0][newValue]);
     };
-    props.getSegmentedValue(value);
+
+    if (props.hasOwnProperty('getSegmentedValue')) {
+        props.getSegmentedValue(value);
+    }
 
     // console.log(`value: ${value}`);
 
