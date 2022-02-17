@@ -144,6 +144,7 @@ function Basset() {
 
     const getSegmentedValue = (value) => {
         setSegmentedValue(value);
+        console.log(value)
     }
 
     const handleConnectWallet = () => {
@@ -184,7 +185,7 @@ function Basset() {
                         BURN
                     </SegmentedControl>
 
-                    {segmentedValue !== "MINT" ?
+                    {segmentedValue === "MINT" ?
                         <>
                             <NearFlowContainer>
                                 <NearIconContainer>
@@ -216,21 +217,21 @@ function Basset() {
                         <>
                             <NearFlowContainer>
                                 <NearIconContainer>
-                                    <Near/>
-                                    NEAR
+                                    <BNear/>
+                                    bNEAR
                                 </NearIconContainer>
                                 <Arrow style={{marginBottom: "18px"}}/>
                                 <NearIconContainer>
-                                    <BNear/>
-                                    bNEAR
+                                    <Near/>
+                                    NEAR
                                 </NearIconContainer>
                             </NearFlowContainer>
 
                             <InputContainer>
-                                <InputField FormHelperTop="I WANT TO BOND" FormHelperBottom="Balance" Unit="NEAR"
+                                <InputField FormHelperTop="I WANT TO MINT" FormHelperBottom="Balance" Unit="NEAR"
                                             isFormHelper={true}/>
                                 <SmallArrow style={{margin: "5px 0 5px 0"}}/>
-                                <InputField FormHelperTop="AND MINT" Unit="bNEAR"/>
+                                <InputField FormHelperTop="AND BOND" Unit="bNEAR"/>
                             </InputContainer>
 
                             <PriceTextContainer>
@@ -238,7 +239,7 @@ function Basset() {
                                 <p>{exchangeRate}</p>
                             </PriceTextContainer>
 
-                            <MintButton onClick={handleMint}>MINT</MintButton>
+                            <MintButton onClick={handleMint}>BOND</MintButton>
                         </>
                     }
                 </SecondCardContainer>
