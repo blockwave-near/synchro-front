@@ -80,7 +80,6 @@ const TextContainer = styled("div")`
   width: 640px;
   display: flex;
   justify-content: space-between;
-
 `
 
 BootstrapDialogTitle.propTypes = {
