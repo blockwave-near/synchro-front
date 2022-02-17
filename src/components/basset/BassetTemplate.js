@@ -1,10 +1,24 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import {ReactComponent as LinkMark} from "assets/Link.svg";
+import {ReactComponent as Near} from "assets/Near.svg";
+import {ReactComponent as BNear} from "assets/bNear.svg";
+import {ReactComponent as Arrow} from "assets/Arrow.svg";
+import {ReactComponent as SmallArrow} from "assets/SmallArrow.svg";
 import {Link} from 'react-router-dom';
 import Button from "components/common/Button";
 import ButtonIcon from "components/common/ButtonIcon";
 import SegmentedControl from "components/common/SegmentedControl";
+import InputField from "components/common/InputField";
+
+const MintButton = styled(Button)`
+  margin: 30px 0 0 0;
+  width: 250px;
+  height: 72px;
+  font-size: 21px;
+  background: #222222;
+  border-radius: 100px;
+`;
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -62,20 +76,6 @@ const MainCardContainer = styled.div`
   }
 `;
 
-// const CardTextContainer = styled.div`
-//   font-weight: 700;
-//   font-size: 60px;
-//   display: flex;
-//   align-items: flex-end;
-//   color: #222222;
-//
-//   p {
-//     font-weight: 500;
-//     font-size: 18px;
-//     color: #777777;
-//   }
-// `;
-
 const SecondCardContainer = styled.div`
   margin-left: 30px;
   width: 63%;
@@ -95,24 +95,64 @@ const SecondCardContainer = styled.div`
     font-size: 18px;
     color: #777777;
   }
-`
+`;
 
 const ButtonContinaer = styled.div`
   display: flex;
   justify-content: flex-end;
+`;
+
+const NearIconContainer = styled.div`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #222222;
+  display: flex;
+  flex-direction: column;
+`;
+
+const NearFlowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+`
+
+const PriceTextContainer = styled.div`
+  font-weight: 500;
+  font-size: 14px;
+  color: #222222;
+  text-align: right;
+  margin-top: 55px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
 `
 
 
 function Basset() {
-    const [segmentedValue, setSegmentedValue] = useState('');
+    const [segmentedValue, setSegmentedValue] = useState('MINT');
+    const [exchangeRate, setExchangeRate] = useState('0.99999 bNEAR per NEAR');
 
     const getSegmentedValue = (value) => {
         setSegmentedValue(value);
     }
 
     const handleConnectWallet = () => {
-        console.log('ConnectWallet Button Click')
+        console.log('ConnectWallet Button Click');
     };
+
+    const handleMint = () => {
+        console.log('Mint Button Click');
+    }
 
     return (
         <Container>
@@ -144,11 +184,65 @@ function Basset() {
                         BURN
                     </SegmentedControl>
 
+                    {segmentedValue !== "MINT" ?
+                        <>
+                            <NearFlowContainer>
+                                <NearIconContainer>
+                                    <Near/>
+                                    NEAR
+                                </NearIconContainer>
+                                <Arrow style={{marginBottom: "18px"}}/>
+                                <NearIconContainer>
+                                    <BNear/>
+                                    bNEAR
+                                </NearIconContainer>
+                            </NearFlowContainer>
 
+                            <InputContainer>
+                                <InputField FormHelperTop="I WANT TO BOND" FormHelperBottom="Balance" Unit="NEAR"
+                                            isFormHelper={true}/>
+                                <SmallArrow style={{margin: "5px 0 5px 0"}}/>
+                                <InputField FormHelperTop="AND MINT" Unit="bNEAR"/>
+                            </InputContainer>
+
+                            <PriceTextContainer>
+                                <p>PRICE</p>
+                                <p>{exchangeRate}</p>
+                            </PriceTextContainer>
+
+                            <MintButton onClick={handleMint}>MINT</MintButton>
+                        </>
+                        :
+                        <>
+                            <NearFlowContainer>
+                                <NearIconContainer>
+                                    <Near/>
+                                    NEAR
+                                </NearIconContainer>
+                                <Arrow style={{marginBottom: "18px"}}/>
+                                <NearIconContainer>
+                                    <BNear/>
+                                    bNEAR
+                                </NearIconContainer>
+                            </NearFlowContainer>
+
+                            <InputContainer>
+                                <InputField FormHelperTop="I WANT TO BOND" FormHelperBottom="Balance" Unit="NEAR"
+                                            isFormHelper={true}/>
+                                <SmallArrow style={{margin: "5px 0 5px 0"}}/>
+                                <InputField FormHelperTop="AND MINT" Unit="bNEAR"/>
+                            </InputContainer>
+
+                            <PriceTextContainer>
+                                <p>PRICE</p>
+                                <p>{exchangeRate}</p>
+                            </PriceTextContainer>
+
+                            <MintButton onClick={handleMint}>MINT</MintButton>
+                        </>
+                    }
                 </SecondCardContainer>
             </CardSideContainer>
-
-
         </Container>
     );
 }

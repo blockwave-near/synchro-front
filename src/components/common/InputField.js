@@ -70,7 +70,7 @@ const StyledFormHelperText = styled(FormHelperText)`
   }
 `
 
-function InputField() {
+function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper}) {
     const [values, setValues] = useState(0);
     const [walletValue, setWalletValue] = useState(967.555);
 
@@ -80,7 +80,7 @@ function InputField() {
         maximumFractionDigits: 3
     });
 
-    console.log(values);
+    // console.log(values);
 
     const handleChange = (prop) => (event) => {
         if (event.target.value.length > 19) {
@@ -92,24 +92,27 @@ function InputField() {
     return (
         <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
             <div>
-                <FormHelperText id="filled-weight-helper-text">Amount</FormHelperText>
+                <FormHelperText id="filled-weight-helper-text">{FormHelperTop}</FormHelperText>
                 <FormControl variant="filled">
                     <StyledInputElement
                         id="filled-adornment-weight"
                         disableUnderline={true}
-                        value={values.USDT}
+                        value={values.unit}
                         type="number"
-                        onChange={handleChange('USDT')}
-                        endAdornment={<StyledInputAdornment position="end">USDT</StyledInputAdornment>}
+                        onChange={handleChange(Unit)}
+                        endAdornment={<StyledInputAdornment position="end">{Unit}</StyledInputAdornment>}
                         aria-describedby="filled-weight-helper-text"
                         inputProps={{
-                            'aria-label': 'USDT',
+                            'aria-label': `${Unit}`,
                         }}
                     />
                 </FormControl>
                 {/*100 -> WalletMaxValue*/}
-                <StyledFormHelperText id="filled-weight-helper-text">Wallet:&nbsp;
-                    <p>{formatter.format(walletValue)}</p></StyledFormHelperText>
+                {isFormHelper &&
+                <StyledFormHelperText id="filled-weight-helper-text">
+                    {FormHelperBottom}:&nbsp;<p>{formatter.format(walletValue)}</p>
+                </StyledFormHelperText>
+                }
             </div>
         </Box>
     );
