@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -71,7 +71,8 @@ const StyledFormHelperText = styled(FormHelperText)`
 `
 
 function InputField() {
-    const [values, setValues] = React.useState(0);
+    const [values, setValues] = useState(0);
+    const [walletValue, setWalletValue] = useState(967.555);
 
     let formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -108,7 +109,7 @@ function InputField() {
                 </FormControl>
                 {/*100 -> WalletMaxValue*/}
                 <StyledFormHelperText id="filled-weight-helper-text">Wallet:&nbsp;
-                    <p>{values.length < 19 && formatter.format(values)}</p></StyledFormHelperText>
+                    <p>{formatter.format(walletValue)}</p></StyledFormHelperText>
             </div>
         </Box>
     );
