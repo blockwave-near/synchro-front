@@ -26,7 +26,7 @@ const StyledLink = styled(LinkMark)`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: 92%;
   padding: 35px 45px 114px 45px;
 `;
 
@@ -131,8 +131,8 @@ const PriceTextContainer = styled.div`
   font-size: 14px;
   color: #222222;
   text-align: right;
-  margin-top: 55px;
-  width: 80%;
+  margin-top: 45px;
+  width: 70%;
   display: flex;
   justify-content: space-between;
 `
