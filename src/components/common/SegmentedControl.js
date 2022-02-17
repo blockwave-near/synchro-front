@@ -60,9 +60,12 @@ function SegmentedControl(props) {
     const [value, setValue] = useState(newArray[0][0]);
 
     const handleChange = (event, newValue) => {
+        // console.log(newValue)
+        // console.log(newArray)
+        // console.log(newArray[0][newValue])
         setValue(newArray[0][newValue]);
-        props.getSegmentedValue(value);
     };
+    props.getSegmentedValue(value);
 
     // console.log(`value: ${value}`);
 
