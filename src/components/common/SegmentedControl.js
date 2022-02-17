@@ -82,9 +82,6 @@ function SegmentedControl(props) {
                 {typeof newArray[0][3] === 'string' &&
                     <Tab>{newArray[0][3]}</Tab>
                 }
-                {/*<Tab>{newArray[0][1]}</Tab>*/}
-                {/*<Tab>{newArray[0][2]}</Tab>*/}
-                {/*<Tab>{newArray[0][3]}</Tab>*/}
             </TabsList>
         </TabsUnstyled>
     );

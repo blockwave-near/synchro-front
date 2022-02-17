@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {styled} from '@mui/material/styles';
 import Button from "../Button";
@@ -88,14 +88,20 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function Modal() {
-    const [open, setOpen] = React.useState(false);
+function DepositModal() {
+    const [open, setOpen] = useState(false);
+    const [txValue, setTxValue] = useState(3.678);
+    const [receiveValue, setReceiveValue] = useState(103.678);
 
     const handleClickOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleProceed = () => {
+
     };
 
     return (
@@ -115,18 +121,18 @@ function Modal() {
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
                     <InputField/>
-                    <TextContainer>
+                    <TextContainer style={{marginTop:"35px"}}>
                         <p>Tx Fee</p>
-                        <p>3.678 USDT</p>
+                        <p>{txValue} USDT</p>
                     </TextContainer>
 
                     <TextContainer>
                         <p>Receive Fee</p>
-                        <p>103.678 USDT</p>
+                        <p>{receiveValue} USDT</p>
                     </TextContainer>
                 </StyledBootstrapDialogContent>
                 <StyledDialogActions>
-                    <Button autoFocus onClick={handleClose} width="640px" height="72px" fontSize="21px" style={{marginBottom: "50px"}}>
+                    <Button autoFocus onClick={handleProceed} width="640px" height="72px" fontSize="21px" style={{marginBottom: "50px"}}>
                         Proceed
                     </Button>
                 </StyledDialogActions>
@@ -135,4 +141,4 @@ function Modal() {
     );
 }
 
-export default Modal;
+export default DepositModal;
