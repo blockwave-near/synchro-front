@@ -106,14 +106,12 @@ const ButtonContinaer = styled.div`
 function Basset() {
     const [segmentedValue, setSegmentedValue] = useState('');
 
-    const getSegmentedValue = (text) => {
-        setSegmentedValue(text);
-        // console.log(segmentedValue)
+    const getSegmentedValue = (value) => {
+        setSegmentedValue(value);
     }
 
     const handleConnectWallet = () => {
         console.log('ConnectWallet Button Click')
-        console.log(segmentedValue)
     };
 
     return (

@@ -61,31 +61,28 @@ function SegmentedControl(props) {
 
     const handleChange = (event, newValue) => {
         setValue(newArray[0][newValue]);
+        props.getSegmentedValue(value);
     };
 
-    const sendSegmentedValue = () => {
-        props.getSegmentedValue(value);
-    }
-
-    console.log(`value: ${value}`);
+    // console.log(`value: ${value}`);
 
     return (
         <TabsUnstyled defaultValue={0} onChange={handleChange}>
-            <TabsList>
+            <TabsList >
                 {typeof newArray[0][0] === 'string' &&
-                    <Tab onClick={sendSegmentedValue}>{newArray[0][0]}</Tab>
+                    <Tab>{newArray[0][0]}</Tab>
                 }
 
                 {typeof newArray[0][1] === 'string' &&
-                    <Tab onClick={sendSegmentedValue}>{newArray[0][1]}</Tab>
+                    <Tab>{newArray[0][1]}</Tab>
                 }
 
                 {typeof newArray[0][2] === 'string' &&
-                    <Tab onClick={sendSegmentedValue}>{newArray[0][2]}</Tab>
+                    <Tab>{newArray[0][2]}</Tab>
                 }
 
                 {typeof newArray[0][3] === 'string' &&
-                    <Tab onClick={sendSegmentedValue}>{newArray[0][3]}</Tab>
+                    <Tab>{newArray[0][3]}</Tab>
                 }
             </TabsList>
         </TabsUnstyled>
