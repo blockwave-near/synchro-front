@@ -43,7 +43,7 @@ const Tab = styled(TabUnstyled)`
 `;
 
 const TabsList = styled(TabsListUnstyled)`
-  width: ${(props) => (props.fullWidth ? '100%' : props.width ?? '540px')};
+  width: ${(props) => (props.fullWidth ? '100%' : props.width ?? '100%')};
   height: 36px;
   background-color: ${purple[200]};
   border-radius: 20px;
@@ -54,33 +54,38 @@ const TabsList = styled(TabsListUnstyled)`
 `;
 
 function SegmentedControl(props) {
-    const array = ['Year', 'Month', 'Week', 'Day'];
-    const [value, setValue] = useState("Year");
-
-    const handleChange = (event, newValue) => {
-        setValue(array[newValue]);
-    };
-
     let newArray = [];
     newArray.push(props.children.split(' '))
+
+    const [value, setValue] = useState(newArray[0][0]);
+
+    const handleChange = (event, newValue) => {
+        setValue(newArray[0][newValue]);
+    };
+
+    const sendSegmentedValue = () => {
+        props.getSegmentedValue(value);
+    }
+
+    console.log(`value: ${value}`);
 
     return (
         <TabsUnstyled defaultValue={0} onChange={handleChange}>
             <TabsList>
                 {typeof newArray[0][0] === 'string' &&
-                    <Tab>{newArray[0][0]}</Tab>
+                    <Tab onClick={sendSegmentedValue}>{newArray[0][0]}</Tab>
                 }
 
                 {typeof newArray[0][1] === 'string' &&
-                    <Tab>{newArray[0][1]}</Tab>
+                    <Tab onClick={sendSegmentedValue}>{newArray[0][1]}</Tab>
                 }
 
                 {typeof newArray[0][2] === 'string' &&
-                    <Tab>{newArray[0][2]}</Tab>
+                    <Tab onClick={sendSegmentedValue}>{newArray[0][2]}</Tab>
                 }
 
                 {typeof newArray[0][3] === 'string' &&
-                    <Tab>{newArray[0][3]}</Tab>
+                    <Tab onClick={sendSegmentedValue}>{newArray[0][3]}</Tab>
                 }
             </TabsList>
         </TabsUnstyled>
