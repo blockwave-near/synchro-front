@@ -21,11 +21,16 @@ const Center = styled.div`
   flex-direction: row;
 `
 
+const Box = styled.div`
+  margin-right: 150px;
+`;
+
 function App() {
     return (
         <BrowserRouter>
             <ThemeProvider theme={theme}>
                 <Center>
+                    <Box/>
                     <Sidebar/>
 
                     <Routes>
