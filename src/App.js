@@ -32,6 +32,7 @@ function App() {
                         <Route path="/" element={<Page.Components/>}/>
                         <Route path="/basset" element={<Page.BAsset/>}/>
                         <Route path="/borrow" element={<Page.Borrow/>}/>
+                        <Route path="/gov" element={<Page.Govern/>}/>
                     </Routes>
 
                 </Center>
