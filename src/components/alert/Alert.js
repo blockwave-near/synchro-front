@@ -8,7 +8,8 @@ import {ReactComponent as Close} from "assets/Close.svg";
 import {styled} from "@mui/material/styles"
 
 const StyleAlert = styled(MUIAlert)`
-  width: 1200px;
+  margin-top: 20px;
+  width: 100%;
   height: 46px;
   background-color: #4B4B62;
   font-size: 12px;
