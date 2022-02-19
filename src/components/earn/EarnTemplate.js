@@ -16,6 +16,14 @@ const StyledLink = styled(LinkMark)`
   vertical-align: bottom;
 `;
 
+const ProtectIcon = styled(Protect)`
+    fill: #FFFFFF;
+`;
+
+const DollarIcon = styled(Dollar)`
+    fill: #FFFFFF;
+`;
+
 const EarnButton = styleds(CommonButton)`
     background-color: #FFFFFF;
     color: #8070FF;
@@ -222,13 +230,13 @@ function Earn() {
 
                 <Spacer/>
                 <EarnButton>
-                    <Protect/>
+                    <ProtectIcon/>
                     <SizeBox w={5}/>
                     Protect Your Deposit
                 </EarnButton>
                 <SizeBox w={12}/>
                 <EarnButton>
-                    <Dollar/>
+                    <DollarIcon/>
                     <SizeBox w={5}/>
                     Buy USDT
                 </EarnButton>
