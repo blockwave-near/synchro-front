@@ -42,7 +42,7 @@ const TextContainer = styled.div`
 
 const TitleTextContainer = styled.div`
   width: 100%;
-  margin: 45px 0 0 25px;
+  margin: 25px 0 0 25px;
   font-weight: 700;
   font-size: 36px;
   color: #222222;
