@@ -8,14 +8,16 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import {ReactComponent as CloseIcon} from "assets/ModalClose.svg";
+import {ReactComponent as SmallArrow} from "assets/SmallArrow.svg";
 import InputField from "../InputField";
 import CommonButton from "../CommonButton";
+import Slider from "../Slider";
 
 const BootstrapDialog = styled(Dialog)`
 
   & .MuiDialog-paper {
     width: 800px;
-    height: 600px;
+    height: 800px;
 
     background: #FFFFFF;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
@@ -88,7 +90,7 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function DepositModal() {
+function Withdraw({btnColor}) {
     const [open, setOpen] = useState(false);
     const [txValue, setTxValue] = useState(3.678);
     const [receiveValue, setReceiveValue] = useState(103.678);
@@ -109,7 +111,7 @@ function DepositModal() {
             {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
             {/*    Deposit*/}
             {/*</Button>*/}
-            <CommonButton back={false} onClick={handleClickOpen}>Deposit</CommonButton>
+            <CommonButton back={btnColor} onClick={handleClickOpen}>Provide</CommonButton>
 
             <BootstrapDialog
                 onClose={handleClose}
@@ -118,19 +120,22 @@ function DepositModal() {
                 maxWidth="false"
             >
                 <StyledBootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    Deposit
+                    Provide Collateral
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
-                    <InputField FormHelperTop="Amount" FormHelperBottom="Wallet" Unit="USDT"
+                    <InputField FormHelperTop="Deposit Amount" FormHelperBottom="Wallet" Unit="bNEAR"
                                 isFormHelper={true}/>
+
+                    <SmallArrow/>
+
+                    <InputField FormHelperTop="New Borrow Limit" Unit="USDT"
+                                isFormHelper={true}/>
+
+                    <Slider/>
+
                     <TextContainer style={{marginTop:"35px"}}>
                         <p>Tx Fee</p>
                         <p>{txValue} USDT</p>
-                    </TextContainer>
-
-                    <TextContainer>
-                        <p>Receive Fee</p>
-                        <p>{receiveValue} USDT</p>
                     </TextContainer>
                 </StyledBootstrapDialogContent>
                 <StyledDialogActions>
@@ -143,4 +148,4 @@ function DepositModal() {
     );
 }
 
-export default DepositModal;
+export default Withdraw;

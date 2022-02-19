@@ -4,11 +4,17 @@ import {ReactComponent as LinkMark} from "assets/Link.svg";
 import {ReactComponent as BNear} from "assets/bNear.svg";
 import {ReactComponent as Liquidation} from "assets/Liquidation.svg";
 import {Link} from 'react-router-dom';
-import CommonButton from "components/common/CommonButton";
 import ButtonIcon from "components/common/ButtonIcon";
 import BorrowBoard from "./borrowBoard";
 import SecondBorrowBoard from "./SecondBorrowBoard";
 import TransitionAlerts from "components/alert/Alert";
+import ProvideCollateralModal from "../common/modal/ProvideCollateralModal";
+import WithdrawCollateralModal from "../common/modal/WithdrawCollateralModal";
+
+const SizeBox = styled.div`
+  width: ${props => `${props.w ?? 0}px`};
+  height: ${props => `${props.h ?? 0}px`};
+`;
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -210,8 +216,11 @@ function BorrowTemplate() {
                 <FirstLineContainer>
                     <p>Position Management</p>
                     <ButtonContainer>
-                        <CommonButton back={true}>Provide</CommonButton>
-                        <CommonButton back={true}>Withdraw</CommonButton>
+                        <ProvideCollateralModal btnColor={true}/>
+                        <SizeBox w={30}/>
+                        {/*<CommonButton back={true}>Provide</CommonButton>*/}
+                        <WithdrawCollateralModal btnColor={true}/>
+                        {/*<CommonButton back={true}>Withdraw</CommonButton>*/}
                     </ButtonContainer>
                 </FirstLineContainer>
 
@@ -223,7 +232,7 @@ function BorrowTemplate() {
                             <ValueCircle>
                                 Borowed
                                 <p>{borowedUSDT}
-                                    <type>USDT</type>
+                                    <type> USDT</type>
                                 </p>
                             </ValueCircle>
                         </CircleContainer>
@@ -263,8 +272,9 @@ function BorrowTemplate() {
                     </SecondCardTextContainer>
 
                     <CardButtonContainer>
-                        <CommonButton back={false}>Provide</CommonButton>
-                        <CommonButton back={false}>Withdraw</CommonButton>
+                        <ProvideCollateralModal/>
+                        <SizeBox w={30}/>
+                        <WithdrawCollateralModal/>
                     </CardButtonContainer>
                 </CardTextContainer>
 
