@@ -10,6 +10,8 @@ import ButtonIcon from "components/common/ButtonIcon";
 import CommonButton from "../common/CommonButton";
 import Chip from "../common/Chip";
 import SegmentedControl from "../common/SegmentedControl";
+import DepositModal from "../common/modal/DepositModal";
+import WithdrawModal from "../common/modal/WithdrawModal";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -259,14 +261,16 @@ function Earn() {
                     <TopSpacer/>
                     <Row style={{justifySelf: 'end', alignSelf: 'end'}}>
                         <Spacer/>
-                        <CommonButton back={false}>
-                            Deposit
-                        </CommonButton>
+                        <DepositModal/>
+                        {/*<CommonButton back={false}>*/}
+                        {/*    Deposit*/}
+                        {/*</CommonButton>*/}
 
                         <SizeBox w={30}/>
-                        <CommonButton back={false}>
-                            Withdraw
-                        </CommonButton>
+                        <WithdrawModal/>
+                        {/*<CommonButton back={false}>*/}
+                        {/*    Withdraw*/}
+                        {/*</CommonButton>*/}
                     </Row>
                 </MainCardContainer>
                 <SecondCardContainer>

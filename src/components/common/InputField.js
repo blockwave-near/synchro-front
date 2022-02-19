@@ -110,7 +110,7 @@ function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper}) {
                 {/*100 -> WalletMaxValue*/}
                 {isFormHelper &&
                 <StyledFormHelperText id="filled-weight-helper-text">
-                    {FormHelperBottom}:&nbsp;<p>{formatter.format(walletValue)}</p>
+                    {FormHelperBottom}{FormHelperBottom && <p>:&nbsp;{formatter.format(walletValue)}</p>}
                 </StyledFormHelperText>
                 }
             </div>

@@ -88,7 +88,7 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function DepositModal() {
+function Withdraw() {
     const [open, setOpen] = useState(false);
     const [txValue, setTxValue] = useState(3.678);
     const [receiveValue, setReceiveValue] = useState(103.678);
@@ -109,7 +109,7 @@ function DepositModal() {
             {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
             {/*    Deposit*/}
             {/*</Button>*/}
-            <CommonButton back={false} onClick={handleClickOpen}>Deposit</CommonButton>
+            <CommonButton back={false} onClick={handleClickOpen}>Withdraw</CommonButton>
 
             <BootstrapDialog
                 onClose={handleClose}
@@ -118,7 +118,7 @@ function DepositModal() {
                 maxWidth="false"
             >
                 <StyledBootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    Deposit
+                    Withdraw
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
                     <InputField FormHelperTop="Amount" FormHelperBottom="Wallet" Unit="USDT"
@@ -143,4 +143,4 @@ function DepositModal() {
     );
 }
 
-export default DepositModal;
+export default Withdraw;

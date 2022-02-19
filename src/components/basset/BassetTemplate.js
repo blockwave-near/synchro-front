@@ -11,15 +11,7 @@ import CommonButton from "../common/CommonButton";
 import ButtonIcon from "components/common/ButtonIcon";
 import SegmentedControl from "components/common/SegmentedControl";
 import InputField from "components/common/InputField";
-
-const MintButton = styled(CommonButton)`
-  margin: 30px 0 0 0;
-  width: 250px;
-  height: 72px;
-  font-size: 21px;
-  background: #222222;
-  border-radius: 100px;
-`;
+import CompleteModal from "../common/modal/CompleteModal";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -265,7 +257,7 @@ function Basset() {
                                 <p>{exchangeRate}</p>
                             </PriceTextContainer>
 
-                            <MintButton onClick={handleMint}>MINT</MintButton>
+                            <CompleteModal>MINT</CompleteModal>
                         </>
                         :
                         <>
@@ -293,7 +285,7 @@ function Basset() {
                                 <p>{exchangeRate}</p>
                             </PriceTextContainer>
 
-                            <MintButton onClick={handleMint}>BOND</MintButton>
+                            <CompleteModal>BOND</CompleteModal>
                         </>
                     }
                 </SecondCardContainer>

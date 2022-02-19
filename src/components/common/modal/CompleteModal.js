@@ -8,8 +8,18 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import {ReactComponent as CloseIcon} from "assets/ModalClose.svg";
-import InputField from "../InputField";
-import CommonButton from "../CommonButton";
+import CommonButton from "components/common/CommonButton";
+import {ReactComponent as CompleteIcon} from "assets/CompleteIcon.svg";
+
+
+const MintButton = styled(CommonButton)`
+  margin: 30px 0 0 0;
+  width: 250px;
+  height: 72px;
+  font-size: 21px;
+  background: #222222;
+  border-radius: 100px;
+`;
 
 const BootstrapDialog = styled(Dialog)`
 
@@ -54,7 +64,7 @@ const BootstrapDialogTitle = (props) => {
 
 const StyledBootstrapDialogTitle = styled(BootstrapDialogTitle)`
   font-family: 'Work Sans', 'Segoe UI', Roboto, Arial, sans-serif;
-  margin-top: 133px;
+  margin-top: 92px;
   padding: 0 16px 0 16px;
   font-style: normal;
   font-weight: 700;
@@ -65,7 +75,7 @@ const StyledBootstrapDialogTitle = styled(BootstrapDialogTitle)`
 
 const StyledBootstrapDialogContent = styled(DialogContent)`
   //width: 640px;
-  margin-top: 60px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,15 +93,24 @@ const TextContainer = styled("div")`
   justify-content: space-between;
 `
 
+const IconTitleContainer = styled("div")`
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+`;
+
 BootstrapDialogTitle.propTypes = {
     children: PropTypes.node,
     onClose: PropTypes.func.isRequired,
 };
 
-function DepositModal() {
+function DepositModal({children}) {
     const [open, setOpen] = useState(false);
     const [txValue, setTxValue] = useState(3.678);
-    const [receiveValue, setReceiveValue] = useState(103.678);
+    const [txHash, setTxHash] = useState("9C765C...3C5EDC");
+    const [exchangeRate, setExchangeRate] = useState(1.00843);
+    const [mintValue, setMintValue] = useState(10.033886);
+    const [bondedAmount, setBondedAmount] = useState(10);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -109,7 +128,7 @@ function DepositModal() {
             {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
             {/*    Deposit*/}
             {/*</Button>*/}
-            <CommonButton back={false} onClick={handleClickOpen}>Deposit</CommonButton>
+            <MintButton onClick={handleClickOpen}>{children}</MintButton>
 
             <BootstrapDialog
                 onClose={handleClose}
@@ -118,24 +137,41 @@ function DepositModal() {
                 maxWidth="false"
             >
                 <StyledBootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    Deposit
+                    <IconTitleContainer>
+                        <CompleteIcon style={{marginBottom:"5px"}}/>
+                        Complete!
+                    </IconTitleContainer>
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
-                    <InputField FormHelperTop="Amount" FormHelperBottom="Wallet" Unit="USDT"
-                                isFormHelper={true}/>
                     <TextContainer style={{marginTop:"35px"}}>
+                        <p>Bonded Amount</p>
+                        <p>{bondedAmount} NEAR</p>
+                    </TextContainer>
+
+                    <TextContainer>
+                        <p>Minted Amount</p>
+                        <p>{mintValue} bNEAR</p>
+                    </TextContainer>
+
+                    <TextContainer>
+                        <p>Exchange Rate</p>
+                        <p>{exchangeRate}</p>
+                    </TextContainer>
+
+                    <TextContainer>
+                        <p>Tx Hash</p>
+                        <p>{txHash}</p>
+                    </TextContainer>
+
+                    <TextContainer>
                         <p>Tx Fee</p>
                         <p>{txValue} USDT</p>
                     </TextContainer>
 
-                    <TextContainer>
-                        <p>Receive Fee</p>
-                        <p>{receiveValue} USDT</p>
-                    </TextContainer>
                 </StyledBootstrapDialogContent>
                 <StyledDialogActions>
                     <Button autoFocus onClick={handleProceed} width="640px" height="72px" fontSize="21px" style={{marginBottom: "50px"}}>
-                        Proceed
+                        OK
                     </Button>
                 </StyledDialogActions>
             </BootstrapDialog>
