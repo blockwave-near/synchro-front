@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@mui/material/Button'; //
+import Button from '@mui/material/Button';
 import {ReactComponent as Wallet} from "assets/Wallet.svg";
 import {styled} from "@mui/material/styles"
 
@@ -22,9 +22,9 @@ const IconButton = styled(Button)`
   box-shadow: 0 4px 10px rgba(91, 78, 230, 0.25);
   border-radius: 100px;
 
- &:hover {
-  background: #5B4EE6;
-}
+  &:hover {
+    background: #5B4EE6;
+  }
 `
 
 function ButtonIcon(props) {

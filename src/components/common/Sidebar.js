@@ -5,12 +5,15 @@ import SidebarItem from './SidebarItem';
 const Side = styled.div`
   display: flex;
   border-right: 1px solid black;
+  position: fixed;
   flex-direction: column;
   align-items: center;
   background: #25252e;
   width: 150px;
   height: 100vh;
   border-radius: 0 0 50px 0;
+  
+  z-index: 10000;
 `;
 
 const Menu = styled.div`
