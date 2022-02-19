@@ -11,7 +11,7 @@ const ChipTag = styled(ChipComponent)`
   width: 71px;
   height: 26px;
 
-  background: #FFFFFF;
+  background: ${props => props.black ? '#222222' : '#FFFFFF'};
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
   border-radius: 20px;
@@ -21,12 +21,12 @@ const ChipTag = styled(ChipComponent)`
   font-size: 14px;
   text-align: center;
 
-  color: #777777;
+  color: ${props => props.black ? '#C4C4C4' : '#777777'};
 `;
 
 function Chip(props) {
     return (
-        <ChipTag label={props.children} />
+        <ChipTag black={props.black} label={props.children} />
     );
 }
 

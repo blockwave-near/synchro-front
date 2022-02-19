@@ -240,6 +240,7 @@ const Row = styled.div`
   width: 100%;
   flex-direction: row;
 `;
+
 const Col = styled.div`
   display: flex;
   flex-direction: column;
@@ -248,7 +249,9 @@ const Col = styled.div`
   width: max-content;
   height: max-content;
 `;
+
 const Spacer = styled.div`margin-right: auto`;
+
 const SizeBox = styled.div`
   width: ${props => `${props.w ?? 0}px`};
   height: ${props => `${props.h ?? 0}px`};
@@ -453,8 +456,9 @@ function Govern() {
                         </Row>
                     </PollCardContainer>
                 })}
+                <SizeBox h={100}/>
+                <SizeBox h={100}/>
             </PollContainer>
-            <SizeBox w={0} h={100}/>
         </Container>
     );
 }

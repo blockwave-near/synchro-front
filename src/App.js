@@ -34,8 +34,9 @@ function App() {
                     <Sidebar/>
                     <Routes>
                         <Route path="/" element={<Page.Components/>}/>
-                        <Route path="/basset" element={<Page.BAsset/>}/>
+                        <Route path="/earn" element={<Page.Earn/>}/>
                         <Route path="/borrow" element={<Page.Borrow/>}/>
+                        <Route path="/basset" element={<Page.BAsset/>}/>
                         <Route path="/gov" element={<Page.Govern/>}/>
                     </Routes>
                 </Center>
