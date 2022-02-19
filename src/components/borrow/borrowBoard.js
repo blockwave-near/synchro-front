@@ -7,10 +7,14 @@ const Card = styled.div`
   border-radius: 20px;
   background-color: #25252E;
   box-shadow: 0 4px 10px rgba(91, 78, 230, 0.25);
+
+  & + & {
+    margin-left: 30px;
+  }
 `;
 
 const TextContainer = styled.div`
-  margin: 40px 193px 95px 30px;
+  padding: 40px 30px 20px 30px;
   width: 100%;
   height: 75px;
 `
@@ -25,17 +29,15 @@ const TitleTextConatiner = styled.div`
 `;
 
 const ValueTextContainer = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   color: #FFFFFF;
-  margin-top: 10px;
+  
+  margin: 10px 0 0 20px;
 
-  display: inline-block;
-  margin-left: 20px;
-
-  p {
+  number {
     font-size: 42px;
+    font-weight: 700;
     display: inline-block;
   }
 `;
@@ -45,7 +47,9 @@ function borrowCard(props) {
         <Card>
             <TextContainer>
                 <TitleTextConatiner>Collateral Value</TitleTextConatiner>
-                <ValueTextContainer>$<p>{props.children}</p></ValueTextContainer>
+                <ValueTextContainer>
+                    $<number>{props.children}</number>
+                </ValueTextContainer>
             </TextContainer>
         </Card>
     );

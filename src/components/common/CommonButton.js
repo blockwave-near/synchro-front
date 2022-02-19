@@ -22,6 +22,10 @@ const ButtonContainer = styled(Button)`
   &:hover {
     background: #5B4EE6;
   }
+
+  & + & {
+    margin-left: 30px;
+  }
 `;
 
 function CommonButton(props) {
