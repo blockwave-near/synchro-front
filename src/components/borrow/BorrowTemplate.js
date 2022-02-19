@@ -3,11 +3,18 @@ import styled from "styled-components";
 import {ReactComponent as LinkMark} from "assets/Link.svg";
 import {ReactComponent as Liquidation} from "assets/Liquidation.svg";
 import {Link} from 'react-router-dom';
-import Button from "components/common/Button";
+import CommonButton from "components/common/CommonButton";
+import ButtonIcon from "../common/ButtonIcon";
+import BorrowBoard from "./borrowBoard";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
   vertical-align: bottom;
+`;
+
+const ButtonContainer = styled('div')`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const StyledLiquidation = styled(Liquidation)`
@@ -51,9 +58,14 @@ const SubTextContainer = styled.div`
   margin-right: 23px;
 `;
 
+const FirstLineContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 const MainCardContainer = styled.div`
   width: 100%;
-  height: 360px;
+  height: 50%;
   padding: 60px 40px 36px 40px;
   margin-top: 21px;
   background: #FFFFFF;
@@ -64,13 +76,29 @@ const MainCardContainer = styled.div`
     font-weight: 500;
     font-size: 18px;
     color: #777777;
-  } 
+  }
 `;
+
+const CardContainer = styled.div`
+    display: flex;
+  margin-top: 33px;
+`
 
 
 function BorrowTemplate() {
+    const [collateralValue, setCollateralValue] = useState('5,691.595');
+    const [borrowedValue, setBorrowedValue] = useState(2127)
+
+    const handleConnectWallet = () => {
+        console.log('ConnectWallet Button Click');
+    };
+
     return (
         <Container>
+            <ButtonContainer>
+                <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
+            </ButtonContainer>
+
             <TextContainer>
                 <TitleTextContainer>
                     Borrow
@@ -86,7 +114,18 @@ function BorrowTemplate() {
             </TextContainer>
 
             <MainCardContainer>
-                <p>Position Management</p>
+                <FirstLineContainer>
+                    <p>Position Management</p>
+                    <ButtonContainer>
+                        <CommonButton back={true}>Provide</CommonButton>
+                        <CommonButton back={true}>Withdraw</CommonButton>
+                    </ButtonContainer>
+                </FirstLineContainer>
+
+                <CardContainer>
+                    <BorrowBoard>{collateralValue}</BorrowBoard>
+                    <BorrowBoard>{borrowedValue}</BorrowBoard>
+                </CardContainer>
             </MainCardContainer>
 
         </Container>

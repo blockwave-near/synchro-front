@@ -1,17 +1,18 @@
 import React, {useState} from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
+import {styled} from "@mui/material/styles";
 import {ReactComponent as LinkMark} from "assets/Link.svg";
 import {ReactComponent as Near} from "assets/Near.svg";
 import {ReactComponent as BNear} from "assets/bNear.svg";
 import {ReactComponent as Arrow} from "assets/Arrow.svg";
 import {ReactComponent as SmallArrow} from "assets/SmallArrow.svg";
 import {Link} from 'react-router-dom';
-import Button from "components/common/Button";
+import CommonButton from "../common/CommonButton";
 import ButtonIcon from "components/common/ButtonIcon";
 import SegmentedControl from "components/common/SegmentedControl";
 import InputField from "components/common/InputField";
 
-const MintButton = styled(Button)`
+const MintButton = styled(CommonButton)`
   margin: 30px 0 0 0;
   width: 250px;
   height: 72px;
@@ -25,23 +26,23 @@ const StyledLink = styled(LinkMark)`
   vertical-align: bottom;
 `;
 
-const Container = styled.div`
+const Container = styled('div')`
   width: 92%;
   padding: 35px 45px 114px 45px;
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled('div')`
   width: 34.5%;
   display: flex;
   flex-direction: column;
 `;
 
-const CardSideContainer = styled.div`
+const CardSideContainer = styled('div')`
   height: 100%;
   display: flex;
 `
 
-const TitleTextContainer = styled.div`
+const TitleTextContainer = styled('div')`
   width: 100%;
   margin: 24px 0 0 25px;
   font-weight: 700;
@@ -59,12 +60,12 @@ const TitleTextContainer = styled.div`
 `;
 
 
-const MainCardContainer = styled.div`
+const MainCardContainer = styled('div')`
   width: 100%;
-  height: 50%;
+  height: 100%;
   //height: 360px;
-  padding: 60px 40px 36px 40px;
   margin-top: 21px;
+  padding: 36px 40px 20px 40px;
   background: #FFFFFF;
   box-shadow: 0 4px 10px rgba(91, 78, 230, 0.25);
   border-radius: 20px;
@@ -73,10 +74,18 @@ const MainCardContainer = styled.div`
     font-weight: 500;
     font-size: 18px;
     color: #777777;
+    margin-bottom: 10px;
+  }
+
+  number {
+    margin-left: 11px;
+    font-weight: 700;
+    font-size: 60px;
+    color: #222222;
   }
 `;
 
-const SecondCardContainer = styled.div`
+const SecondCardContainer = styled('div')`
   margin-left: 30px;
   width: 63%;
   height: 97%;
@@ -97,12 +106,12 @@ const SecondCardContainer = styled.div`
   }
 `;
 
-const ButtonContinaer = styled.div`
+const ButtonContinaer = styled('div')`
   display: flex;
   justify-content: flex-end;
 `;
 
-const NearIconContainer = styled.div`
+const NearIconContainer = styled('div')`
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
@@ -112,21 +121,21 @@ const NearIconContainer = styled.div`
   flex-direction: column;
 `;
 
-const NearFlowContainer = styled.div`
+const NearFlowContainer = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 30px;
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 `
 
-const PriceTextContainer = styled.div`
+const PriceTextContainer = styled('div')`
   font-weight: 500;
   font-size: 14px;
   color: #222222;
@@ -137,8 +146,28 @@ const PriceTextContainer = styled.div`
   justify-content: space-between;
 `
 
+const Row = styled('div')`
+  display: flex;
+  justify-content: ${props => props.center ? 'center' : 'start'};
+  align-items: ${props => props.end ? 'end' : 'start'};
+  width: 100%;
+  flex-direction: row;
+`;
+
+const SizeBox = styled('div')`
+  width: ${props => `${props.w ?? 0}px`};
+  height: ${props => `${props.h ?? 0}px`};
+`;
+
+const CardButtonContainer = styled('div')`
+  display: flex;
+  margin-top: 100px;
+  justify-content: right;
+`
 
 function Basset() {
+    const [positionValue, setPositionValue] = useState('95,145.75');
+    const [withdrawableValue, setWithdrawableValue] = useState(1);
     const [segmentedValue, setSegmentedValue] = useState('MINT');
     const [exchangeRate, setExchangeRate] = useState('0.99999 bNEAR per NEAR');
 
@@ -173,9 +202,34 @@ function Basset() {
                 <CardContainer>
                     <MainCardContainer>
                         <p>Position Management</p>
+                        <Row center={false} end={true}>
+                            <number>
+                                {positionValue}
+                            </number>
+                            <SizeBox w={6}/>
+                            <p>
+                                USDT
+                            </p>
+                        </Row>
+                        <CardButtonContainer>
+                            <CommonButton back={true}>Claim Rewards</CommonButton>
+                        </CardButtonContainer>
+
                     </MainCardContainer>
                     <MainCardContainer style={{marginTop: "30px"}}>
                         <p>Withdrawable NEAR</p>
+                        <Row center={false} end={true}>
+                            <number>
+                                {withdrawableValue}
+                            </number>
+                            <SizeBox w={6}/>
+                            <p>
+                                NEAR
+                            </p>
+                        </Row>
+                        <CardButtonContainer>
+                            <CommonButton back={true}>Withdraw</CommonButton>
+                        </CardButtonContainer>
                     </MainCardContainer>
                 </CardContainer>
 
