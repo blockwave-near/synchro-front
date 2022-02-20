@@ -8,6 +8,7 @@ import ButtonIcon from "components/common/ButtonIcon";
 import CommonButton from "../common/CommonButton";
 import Chip from "../common/Chip";
 import LinePercent from "../common/LinePercent";
+import {login, logout} from "../../utils";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -65,6 +66,16 @@ const SubTitleTextContainer = styled.div`
     font-size: 18px;
     color: #777777;
   }
+`;
+
+const AccountIdTextContainer = styled('div')`
+  width: 100%;
+  margin: 5px 0 0 0px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #222222;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const Number = styled.div`
@@ -298,7 +309,13 @@ function Govern() {
     const [pairTotalStaked, setPairTotalStaked] = useState(54.22);
 
     const handleConnectWallet = () => {
-        console.log('ConnectWallet Button Click');
+        login();
+        // console.log('ConnectWallet Button Click');
+    };
+
+    const handleDisconnectWallet = () => {
+        logout();
+        // console.log('Disconnect Button Click');
     };
 
     useEffect(() => {
@@ -307,9 +324,20 @@ function Govern() {
 
     return (
         <Container>
-            <ButtonContainer>
-                <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
-            </ButtonContainer>
+            {window.walletConnection.isSignedIn() ?
+                <>
+                    <ButtonContainer>
+                        <ButtonIcon onClick={handleDisconnectWallet}>Disconnect</ButtonIcon>
+                    </ButtonContainer>
+                    <AccountIdTextContainer>
+                        Account ID: {window.accountId}
+                    </AccountIdTextContainer>
+                </>
+                :
+                <ButtonContainer>
+                    <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
+                </ButtonContainer>
+            }
 
             <TitleTextContainer>
                 Governance

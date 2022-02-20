@@ -12,6 +12,7 @@ import Chip from "../common/Chip";
 import SegmentedControl from "../common/SegmentedControl";
 import DepositModal from "../common/modal/DepositModal";
 import WithdrawModal from "../common/modal/WithdrawModal";
+import {login, logout} from "../../utils";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -40,6 +41,16 @@ const Container = styled.div`
   width: 100%;
   min-width: 1240px;
   padding: 35px 45px 114px 45px;
+`;
+
+const AccountIdTextContainer = styled('div')`
+  width: 100%;
+  margin: 5px 0 0 0px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #222222;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const CardSideContainer = styled.div`
@@ -210,7 +221,13 @@ function Earn() {
     const [totalDeposit, setTotalDeposit] = useState(1427);
 
     const handleConnectWallet = () => {
-        console.log('ConnectWallet Button Click');
+        login();
+        // console.log('ConnectWallet Button Click');
+    };
+
+    const handleDisconnectWallet = () => {
+        logout();
+        // console.log('Disconnect Button Click');
     };
 
     useEffect(() => {
@@ -219,9 +236,20 @@ function Earn() {
 
     return (
         <Container>
-            <ButtonContainer>
-                <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
-            </ButtonContainer>
+            {window.walletConnection.isSignedIn() ?
+                <>
+                    <ButtonContainer>
+                        <ButtonIcon onClick={handleDisconnectWallet}>Disconnect</ButtonIcon>
+                    </ButtonContainer>
+                    <AccountIdTextContainer>
+                        Account ID: {window.accountId}
+                    </AccountIdTextContainer>
+                </>
+                :
+                <ButtonContainer>
+                    <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
+                </ButtonContainer>
+            }
 
             <TitleTextContainer>
                 Earn
