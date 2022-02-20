@@ -180,8 +180,8 @@ const MintButton = styled(CommonButton)`
 function Basset() {
     const [stakeAccount, setStakeAccount] = useState({});
     const [segmentedValue, setSegmentedValue] = useState('MINT');
-    const [nearBalance, setNearBalance] = useState('967.555');
-    const [bNearBalance, setBNearBalance] = useState('967.555');
+    const [nearBalance, setNearBalance] = useState('0');
+    const [bNearBalance, setBNearBalance] = useState('0');
     // const [exchangeRate, setExchangeRate] = useState('0.99999 bNEAR per NEAR');
     const mintRef = useRef();
     const burnRef = useRef();
