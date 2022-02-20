@@ -1,7 +1,7 @@
-import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
-import getConfig from './config'
+import { connect, Contract, keyStores, WalletConnection } from 'near-api-js';
+import getConfig from './config';
 
-const nearConfig = getConfig(process.env.NODE_ENV || 'development')
+const nearConfig = getConfig('development');
 
 const BNEAR_STAKING = 'staking.bnear.synchro.testnet';
 const BNEAR_TOKEN = 'bnear.synchro.testnet';
