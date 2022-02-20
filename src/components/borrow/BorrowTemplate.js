@@ -80,7 +80,7 @@ const FirstLineContainer = styled.div`
 
 const MainCardContainer = styled.div`
   width: 100%;
-  height: 50%;
+  height: 58%;
   padding: 60px 40px 36px 40px;
   margin-top: 21px;
   background: #FFFFFF;
@@ -137,7 +137,7 @@ const CircleContainer = styled.div`
 
 const SecondMainCardContainer = styled.div`
   width: 100%;
-  height: 50%;
+  height: 65%;
   font-size: 18px;
   font-weight: 700;
   color: #222222;
