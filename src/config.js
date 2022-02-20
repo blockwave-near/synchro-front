@@ -52,4 +52,4 @@ function getConfig(env) {
   }
 }
 
-module.exports = getConfig
+export default getConfig;
