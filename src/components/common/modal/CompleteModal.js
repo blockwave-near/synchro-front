@@ -94,7 +94,7 @@ const TextContainer = styled("div")`
 `
 
 const IconTitleContainer = styled("div")`
-  display: flex;  
+  display: flex;
   flex-direction: column;
   align-items: center;
 `;
@@ -104,7 +104,7 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function DepositModal({children}) {
+function CompleteModal({children}) {
     const [open, setOpen] = useState(false);
     const [txValue, setTxValue] = useState(3.678);
     const [txHash, setTxHash] = useState("9C765C...3C5EDC");
@@ -138,12 +138,12 @@ function DepositModal({children}) {
             >
                 <StyledBootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
                     <IconTitleContainer>
-                        <CompleteIcon style={{marginBottom:"5px"}}/>
+                        <CompleteIcon style={{marginBottom: "5px"}}/>
                         Complete!
                     </IconTitleContainer>
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
-                    <TextContainer style={{marginTop:"35px"}}>
+                    <TextContainer style={{marginTop: "35px"}}>
                         <p>Bonded Amount</p>
                         <p>{bondedAmount} NEAR</p>
                     </TextContainer>
@@ -170,7 +170,8 @@ function DepositModal({children}) {
 
                 </StyledBootstrapDialogContent>
                 <StyledDialogActions>
-                    <Button autoFocus onClick={handleProceed} width="640px" height="72px" fontSize="21px" style={{marginBottom: "50px"}}>
+                    <Button autoFocus onClick={handleProceed} width="640px" height="72px" fontSize="21px"
+                            style={{marginBottom: "50px"}}>
                         OK
                     </Button>
                 </StyledDialogActions>
@@ -179,4 +180,4 @@ function DepositModal({children}) {
     );
 }
 
-export default DepositModal;
+export default CompleteModal;

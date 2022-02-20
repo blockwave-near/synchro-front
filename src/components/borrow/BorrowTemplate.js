@@ -80,10 +80,10 @@ const FirstLineContainer = styled.div`
 
 const MainCardContainer = styled.div`
   width: 100%;
-  height: 58%;
   padding: 60px 40px 36px 40px;
   margin-top: 21px;
   background: #FFFFFF;
+
   box-shadow: 0 4px 10px rgba(91, 78, 230, 0.25);
   border-radius: 20px;
 
@@ -137,7 +137,6 @@ const CircleContainer = styled.div`
 
 const SecondMainCardContainer = styled.div`
   width: 100%;
-  height: 65%;
   font-size: 18px;
   font-weight: 700;
   color: #222222;
@@ -167,7 +166,7 @@ const SecondCardTextContainer = styled.div`
   justify-content: space-between;
 
   type {
-    margin-right: 5px; 
+    margin-right: 5px;
     font-weight: 700;
     font-size: 18px;
     color: #222222;
@@ -176,6 +175,10 @@ const SecondCardTextContainer = styled.div`
 
 const CardTextContainer = styled.div`
   margin-top: 43px;
+`
+
+const AllCardContainer = styled.div`
+  padding-bottom: 114px;
 `
 
 function BorrowTemplate() {
@@ -212,76 +215,78 @@ function BorrowTemplate() {
                 </SubTextContainer>
             </TextContainer>
 
-            <MainCardContainer>
-                <FirstLineContainer>
-                    <p>Position Management</p>
-                    <ButtonContainer>
-                        <ProvideCollateralModal btnColor={true}/>
-                        <SizeBox w={30}/>
-                        {/*<CommonButton back={true}>Provide</CommonButton>*/}
-                        <WithdrawCollateralModal btnColor={true}/>
-                        {/*<CommonButton back={true}>Withdraw</CommonButton>*/}
-                    </ButtonContainer>
-                </FirstLineContainer>
+            <AllCardContainer>
+                <MainCardContainer>
+                    <FirstLineContainer>
+                        <p>Position Management</p>
+                        <ButtonContainer>
+                            <ProvideCollateralModal btnColor={true}/>
+                            <SizeBox w={30}/>
+                            {/*<CommonButton back={true}>Provide</CommonButton>*/}
+                            <WithdrawCollateralModal btnColor={true}/>
+                            {/*<CommonButton back={true}>Withdraw</CommonButton>*/}
+                        </ButtonContainer>
+                    </FirstLineContainer>
 
-                <CardContainer>
-                    <BorrowBoard sign="$" title="Collateral Value"
-                                 valuePosition="front">{collateralValue} </BorrowBoard>
-                    <BorrowBoard sign="$" title="Borrowed Value" valuePosition="front">{borrowedValue}
-                        <CircleContainer>
-                            <ValueCircle>
-                                Borowed
-                                <p>{borowedUSDT}
-                                    <type> USDT</type>
-                                </p>
-                            </ValueCircle>
-                        </CircleContainer>
-                    </BorrowBoard>
-                    <SecondBorrowBoard sign="%" title="NET APR">{netaprValue}
-                        <CircleContainer>
-                            <ValueCircle>
-                                Borrow APR
-                                <p>{borrowAprValue}</p>
-                            </ValueCircle>
-                            <ValueCircle>
-                                Distribution APR
-                                <p>{distributionAprValue}</p>
-                            </ValueCircle>
-                        </CircleContainer>
-                    </SecondBorrowBoard>
-                </CardContainer>
-            </MainCardContainer>
+                    <CardContainer>
+                        <BorrowBoard sign="$" title="Collateral Value"
+                                     valuePosition="front">{collateralValue} </BorrowBoard>
+                        <BorrowBoard sign="$" title="Borrowed Value" valuePosition="front">{borrowedValue}
+                            <CircleContainer>
+                                <ValueCircle>
+                                    Borowed
+                                    <p>{borowedUSDT}
+                                        <type> USDT</type>
+                                    </p>
+                                </ValueCircle>
+                            </CircleContainer>
+                        </BorrowBoard>
+                        <SecondBorrowBoard sign="%" title="NET APR">{netaprValue}
+                            <CircleContainer>
+                                <ValueCircle>
+                                    Borrow APR
+                                    <p>{borrowAprValue}</p>
+                                </ValueCircle>
+                                <ValueCircle>
+                                    Distribution APR
+                                    <p>{distributionAprValue}</p>
+                                </ValueCircle>
+                            </CircleContainer>
+                        </SecondBorrowBoard>
+                    </CardContainer>
+                </MainCardContainer>
 
-            <SecondMainCardContainer>
-                <BNear/>
-                bNEAR
-                <CardTextContainer>
-                    <SecondCardTextContainer>
-                        <p>Price</p>
-                        <p>
-                            <type>{price}</type>
-                            USDT
-                        </p>
-                    </SecondCardTextContainer>
-                    <SecondCardTextContainer>
-                        <p>Provided</p>
-                        <p>
-                            <type>{provided}</type>
-                            USDT
-                        </p>
-                    </SecondCardTextContainer>
+                <SecondMainCardContainer>
+                    <BNear/>
+                    bNEAR
+                    <CardTextContainer>
+                        <SecondCardTextContainer>
+                            <p>Price</p>
+                            <p>
+                                <type>{price}</type>
+                                USDT
+                            </p>
+                        </SecondCardTextContainer>
+                        <SecondCardTextContainer>
+                            <p>Provided</p>
+                            <p>
+                                <type>{provided}</type>
+                                USDT
+                            </p>
+                        </SecondCardTextContainer>
 
-                    <CardButtonContainer>
-                        <ProvideCollateralModal/>
-                        <SizeBox w={30}/>
-                        <WithdrawCollateralModal/>
-                    </CardButtonContainer>
-                </CardTextContainer>
+                        <CardButtonContainer>
+                            <ProvideCollateralModal/>
+                            <SizeBox w={30}/>
+                            <WithdrawCollateralModal/>
+                        </CardButtonContainer>
+                    </CardTextContainer>
+                </SecondMainCardContainer>
 
-            </SecondMainCardContainer>
-            <TransitionAlerts>bAssets that have been transferred to Terra through Wormhole (e.g. webETH)
-                must go
-                through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
+                <TransitionAlerts>bAssets that have been transferred to Terra through Wormhole (e.g. webETH)
+                    must go
+                    through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
+            </AllCardContainer>
         </Container>
     );
 }

@@ -30,8 +30,8 @@ const CardContainer = styled('div')`
 `;
 
 const CardSideContainer = styled('div')`
-  height: 100%;
   display: flex;
+  padding-bottom: 114px;
 `
 
 const TitleTextContainer = styled('div')`
@@ -80,7 +80,7 @@ const MainCardContainer = styled('div')`
 const SecondCardContainer = styled('div')`
   margin-left: 30px;
   width: 63%;
-  height: 97%;
+  height: 100%;
   //height: 750px;
   padding: 44px 105px 38px 105px;
   align-items: center;
@@ -284,8 +284,7 @@ function Basset() {
                                 <p>PRICE</p>
                                 <p>{exchangeRate}</p>
                             </PriceTextContainer>
-
-                            <CompleteModal>BOND</CompleteModal>
+                            <CompleteModal>BURN</CompleteModal>
                         </>
                     }
                 </SecondCardContainer>
