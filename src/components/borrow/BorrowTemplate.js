@@ -10,6 +10,7 @@ import SecondBorrowBoard from "./SecondBorrowBoard";
 import TransitionAlerts from "components/alert/Alert";
 import ProvideCollateralModal from "../common/modal/ProvideCollateralModal";
 import WithdrawCollateralModal from "../common/modal/WithdrawCollateralModal";
+import {login, logout} from "../../utils";
 
 const SizeBox = styled.div`
   width: ${props => `${props.w ?? 0}px`};
@@ -71,6 +72,16 @@ const SubTextContainer = styled.div`
   align-items: flex-end;
   white-space: nowrap;
   margin-right: 23px;
+`;
+
+const AccountIdTextContainer = styled('div')`
+  width: 100%;
+  margin: 5px 0 0 0px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #222222;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const FirstLineContainer = styled.div`
@@ -189,14 +200,31 @@ function BorrowTemplate() {
     const [provided, setProvided] = useState(0)
 
     const handleConnectWallet = () => {
-        console.log('ConnectWallet Button Click');
+        login();
+        // console.log('ConnectWallet Button Click');
+    };
+
+    const handleDisconnectWallet = () => {
+        logout();
+        // console.log('Disconnect Button Click');
     };
 
     return (
         <Container>
-            <ButtonContainer>
-                <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
-            </ButtonContainer>
+            {window.walletConnection.isSignedIn() ?
+                <>
+                    <ButtonContainer>
+                        <ButtonIcon onClick={handleDisconnectWallet}>Disconnect</ButtonIcon>
+                    </ButtonContainer>
+                    <AccountIdTextContainer>
+                        Account ID: {window.accountId}
+                    </AccountIdTextContainer>
+                </>
+                :
+                <ButtonContainer>
+                    <ButtonIcon onClick={handleConnectWallet}>Connect Wallet</ButtonIcon>
+                </ButtonContainer>
+            }
 
             <TextContainer>
                 <TitleTextContainer>
