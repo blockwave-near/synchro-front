@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import {styled} from "@mui/material/styles"
 
 const ButtonContainer = styled(Button)`
-  width: 150px;
+  width: 180px;
   height: 36px;
   padding: 10px 20px;
   background: ${props => props.back ? '#5B4EE6' : '#25252E'};

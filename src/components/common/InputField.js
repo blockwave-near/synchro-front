@@ -70,15 +70,15 @@ const StyledFormHelperText = styled(FormHelperText)`
   }
 `
 
-function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper}) {
+function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper, Balance, inputRef}) {
     const [values, setValues] = useState(0);
-    const [walletValue, setWalletValue] = useState(967.555);
 
-    let formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 3
-    });
+
+    // let formatter = new Intl.NumberFormat('en-US', {
+    //     style: 'currency',
+    //     currency: 'USD',
+    //     maximumFractionDigits: 3
+    // });
 
     // console.log(values);
 
@@ -105,12 +105,13 @@ function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper}) {
                         inputProps={{
                             'aria-label': `${Unit}`,
                         }}
+                        inputRef={inputRef}
                     />
                 </FormControl>
                 {/*100 -> WalletMaxValue*/}
                 {isFormHelper &&
                 <StyledFormHelperText id="filled-weight-helper-text">
-                    {FormHelperBottom}{FormHelperBottom && <p>:&nbsp;{formatter.format(walletValue)}</p>}
+                    {FormHelperBottom}{FormHelperBottom && <p>:&nbsp;{parseFloat(Balance).toFixed(3)} {Unit}</p>}
                 </StyledFormHelperText>
                 }
             </div>

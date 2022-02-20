@@ -5,6 +5,8 @@ import {createTheme} from "@mui/material";
 import {ThemeProvider} from "@mui/material";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Sidebar from "./components/common/Sidebar";
+import { Buffer } from 'buffer';
+global.Buffer = Buffer;
 
 const theme = createTheme({
     typography: {

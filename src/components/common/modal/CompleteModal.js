@@ -104,17 +104,14 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function DepositModal({children}) {
-    const [open, setOpen] = useState(false);
+function DepositModal({modalOpen, handleClick, children}) {
+    const [open, setOpen] = useState(modalOpen);
     const [txValue, setTxValue] = useState(3.678);
     const [txHash, setTxHash] = useState("9C765C...3C5EDC");
-    const [exchangeRate, setExchangeRate] = useState(1.00843);
+    // const [exchangeRate, setExchangeRate] = useState(1.00843);
     const [mintValue, setMintValue] = useState(10.033886);
     const [bondedAmount, setBondedAmount] = useState(10);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
     const handleClose = () => {
         setOpen(false);
     };
@@ -128,7 +125,7 @@ function DepositModal({children}) {
             {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
             {/*    Deposit*/}
             {/*</Button>*/}
-            <MintButton onClick={handleClickOpen}>{children}</MintButton>
+            <MintButton onClick={handleClick}>{children}</MintButton>
 
             <BootstrapDialog
                 onClose={handleClose}
@@ -153,10 +150,10 @@ function DepositModal({children}) {
                         <p>{mintValue} bNEAR</p>
                     </TextContainer>
 
-                    <TextContainer>
+                    {/* <TextContainer>
                         <p>Exchange Rate</p>
                         <p>{exchangeRate}</p>
-                    </TextContainer>
+                    </TextContainer> */}
 
                     <TextContainer>
                         <p>Tx Hash</p>
