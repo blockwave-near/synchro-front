@@ -178,7 +178,7 @@ const CardTextContainer = styled.div`
 `
 
 const AllCardContainer = styled.div`
-  padding-bottom: 114px;
+  padding-bottom: 48px;
 `
 
 function BorrowTemplate() {
