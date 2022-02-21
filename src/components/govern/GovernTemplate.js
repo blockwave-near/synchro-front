@@ -275,30 +275,6 @@ const pollList = [
         rate: 40,
         end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
     },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 20,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 54,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 12,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 86,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
 ];
 
 function Govern() {
@@ -317,10 +293,6 @@ function Govern() {
         logout();
         // console.log('Disconnect Button Click');
     };
-
-    useEffect(() => {
-       // 새로고침마다 변수 값 리로딩 하는 함수 넣으시면 됩니다.
-    });
 
     return (
         <Container>

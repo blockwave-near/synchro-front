@@ -258,7 +258,7 @@ function BorrowTemplate() {
                     <BorrowBoard sign="$" title="Borrowed Value" valuePosition="front">{borrowedValue}
                         <CircleContainer>
                             <ValueCircle>
-                                Borowed
+                                Borrowed
                                 <p>{borowedUSDT}
                                     <type> USDT</type>
                                 </p>
