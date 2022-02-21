@@ -91,7 +91,7 @@ const FirstLineContainer = styled.div`
 
 const MainCardContainer = styled.div`
   width: 100%;
-  height: 50%;
+  height: max-content;
   padding: 60px 40px 36px 40px;
   margin-top: 21px;
   background: #FFFFFF;
@@ -148,7 +148,7 @@ const CircleContainer = styled.div`
 
 const SecondMainCardContainer = styled.div`
   width: 100%;
-  height: 50%;
+  height: max-content;
   font-size: 18px;
   font-weight: 700;
   color: #222222;
@@ -188,6 +188,10 @@ const SecondCardTextContainer = styled.div`
 const CardTextContainer = styled.div`
   margin-top: 43px;
 `
+
+const Box = styled.div`
+    height: 50px;
+`;
 
 function BorrowTemplate() {
     const [collateralValue, setCollateralValue] = useState('5,691.595');
@@ -305,11 +309,13 @@ function BorrowTemplate() {
                         <WithdrawCollateralModal/>
                     </CardButtonContainer>
                 </CardTextContainer>
-
+                <Box/>
             </SecondMainCardContainer>
-            <TransitionAlerts>bAssets that have been transferred to Terra through Wormhole (e.g. webETH)
-                must go
-                through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
+            {/*<TransitionAlerts>bAssets that have been transferred to Terra through Wormhole (e.g. webETH)*/}
+            {/*    must go*/}
+            {/*    through the convert operation to be used as collateral on Anchor. </TransitionAlerts>*/}
+
+            <Box/>
         </Container>
     );
 }

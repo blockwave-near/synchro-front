@@ -40,7 +40,8 @@ const EarnButton = styleds(CommonButton)`
 const Container = styled.div`
   width: 100%;
   min-width: 1240px;
-  padding: 35px 45px 114px 45px;
+  padding: 35px 45px 120px 45px;
+  margin-bottom: 20px;
 `;
 
 const AccountIdTextContainer = styled('div')`
@@ -63,6 +64,7 @@ const SecondCardSideContainer = styled.div`
   height: 440px;
   display: flex;
   margin-top: 30px;
+  margin-bottom: 50px;
 `
 
 const TitleTextContainer = styled.div`
@@ -212,6 +214,7 @@ const Spacer = styled.div`margin-right: auto`;
 const TopSpacer = styled.div`margin-bottom: auto`;
 
 const SizeBox = styled.div`
+  display: flex;
   width: ${props => `${props.w ?? 0}px`};
   height: ${props => `${props.h ?? 0}px`};
 `;

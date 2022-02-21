@@ -1,21 +1,27 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import styleds from "styled-components";
 import {styled} from '@mui/material/styles';
-import Button from "../Button";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import {ReactComponent as CloseIcon} from "assets/ModalClose.svg";
+import {ReactComponent as SmallArrow} from "assets/SmallArrow.svg";
 import InputField from "../InputField";
 import CommonButton from "../CommonButton";
+import SegmentedControl from "../SegmentedControl";
+
+const SmallButton = styled(CommonButton)`
+  width: 150px;
+`;
 
 const BootstrapDialog = styled(Dialog)`
+  z-index: 10000;
 
   & .MuiDialog-paper {
     width: 800px;
-    height: 400px;
+    height: 550px;
 
     background: #FFFFFF;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
@@ -47,36 +53,48 @@ const BootstrapDialogTitle = (props) => {
     );
 };
 
-const StyledBootstrapDialogTitle = styled(BootstrapDialogTitle)`
-  font-family: 'Work Sans', 'Segoe UI', Roboto, Arial, sans-serif;
-  margin-top: 133px;
-  padding: 0 16px 0 16px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 60px;
-  text-align: center;
-  color: #5B4EE6;
+const StyledBootstrapDialogContent = styled(DialogContent)`
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
 `
+
+const ConfirmButton = styled(CommonButton)`
+  margin: 30px 0 0 0;
+  width: 250px;
+  height: 72px;
+  font-size: 21px;
+  background: #222222;
+  border-radius: 100px;
+`;
 
 BootstrapDialogTitle.propTypes = {
     children: PropTypes.node,
     onClose: PropTypes.func.isRequired,
 };
 
+const SizeBox = styleds.div`
+  width: ${props => `${props.w ?? 0}px`};
+  height: ${props => `${props.h ?? 0}px`};
+`;
+
 function ComingSoonModal(props) {
     const [open, setOpen] = useState(false);
-    const [txValue, setTxValue] = useState(3.678);
-    const [receiveValue, setReceiveValue] = useState(103.678);
+    const [pageValue, setPageValue] = useState('None');
 
     const handleClickOpen = () => {
         setOpen(true);
     };
+
     const handleClose = () => {
         setOpen(false);
     };
 
-    const handleProceed = () => {
-
+    const handlePage = (value) => {
+        setPageValue(value);
     };
 
     return (
@@ -84,7 +102,7 @@ function ComingSoonModal(props) {
             {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
             {/*    Deposit*/}
             {/*</Button>*/}
-            <CommonButton back={props.back} onClick={handleClickOpen}>{props.title}</CommonButton>
+            <SmallButton back={props.back} onClick={handleClickOpen}>{props.title}</SmallButton>
 
             <BootstrapDialog
                 onClose={handleClose}
@@ -92,9 +110,52 @@ function ComingSoonModal(props) {
                 open={open}
                 maxWidth="false"
             >
-                <StyledBootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    ComingSoon
-                </StyledBootstrapDialogTitle>
+                <BootstrapDialogTitle onClose={handleClose}/>
+                <StyledBootstrapDialogContent>
+                    <SegmentedControl width={200} getSegmentedValue={handlePage}>
+                        Buy
+                        Sell
+                    </SegmentedControl>
+
+                    <SizeBox h={20}/>
+                    {pageValue == 'Buy' ? <>
+                        <InputField FormHelperTop="From" FormHelperBottom="Wallet"
+                                    Unit="USDT"
+                                    isFormHelper={true}
+                                    Balance={80}
+                        />
+
+                        <SmallArrow/>
+
+                        <InputField FormHelperTop="To"
+                                    Unit="Sync"
+                                    isFormHelper={true}
+                        />
+
+                        <SizeBox h={20}/>
+                        <ConfirmButton>
+                            Buy
+                        </ConfirmButton>
+                    </> : <>
+                        <InputField FormHelperTop="From" FormHelperBottom="Wallet"
+                                    Unit="Sync"
+                                    isFormHelper={true}
+                                    Balance={30}
+                        />
+
+                        <SmallArrow/>
+
+                        <InputField FormHelperTop="To"
+                                    Unit="USDT"
+                                    isFormHelper={true}
+                        />
+
+                        <SizeBox h={20}/>
+                        <ConfirmButton>
+                            Sell
+                        </ConfirmButton>
+                    </>}
+                </StyledBootstrapDialogContent>
             </BootstrapDialog>
         </div>
     );
