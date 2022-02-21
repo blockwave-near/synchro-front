@@ -35,7 +35,7 @@ function Components() {
                 must go
                 through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
             <Card>2127</Card>
-            <DepositModal/>
+            <DepositModal Balance={30}/>
             <ComingSoonModal title={'Withdraw'}/>
             <InputField/>
         </Container>
