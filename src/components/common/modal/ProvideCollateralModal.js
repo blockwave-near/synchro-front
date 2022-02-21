@@ -90,7 +90,7 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function Withdraw({btnColor}) {
+function Withdraw({btnColor, Balance}) {
     const [open, setOpen] = useState(false);
     const [txValue, setTxValue] = useState(3.678);
     const [receiveValue, setReceiveValue] = useState(103.678);
@@ -124,6 +124,7 @@ function Withdraw({btnColor}) {
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
                     <InputField FormHelperTop="Deposit Amount" FormHelperBottom="Wallet" Unit="bNEAR"
+                                Balance={Balance}
                                 isFormHelper={true}/>
 
                     <SmallArrow/>

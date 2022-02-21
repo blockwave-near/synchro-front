@@ -248,10 +248,10 @@ function BorrowTemplate() {
                 <FirstLineContainer>
                     <p>Position Management</p>
                     <ButtonContainer>
-                        <ProvideCollateralModal btnColor={true}/>
+                        <ProvideCollateralModal btnColor={true} Balance={30}/>
                         <SizeBox w={30}/>
                         {/*<CommonButton back={true}>Provide</CommonButton>*/}
-                        <WithdrawCollateralModal btnColor={true}/>
+                        <WithdrawCollateralModal btnColor={true} Balance={50}/>
                         {/*<CommonButton back={true}>Withdraw</CommonButton>*/}
                     </ButtonContainer>
                 </FirstLineContainer>
@@ -304,9 +304,9 @@ function BorrowTemplate() {
                     </SecondCardTextContainer>
 
                     <CardButtonContainer>
-                        <ProvideCollateralModal/>
+                        <ProvideCollateralModal Balance={20}/>
                         <SizeBox w={30}/>
-                        <WithdrawCollateralModal/>
+                        <WithdrawCollateralModal Balance={50}/>
                     </CardButtonContainer>
                 </CardTextContainer>
                 <Box/>

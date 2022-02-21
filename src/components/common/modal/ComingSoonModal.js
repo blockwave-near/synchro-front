@@ -14,6 +14,7 @@ import CommonButton from "../CommonButton";
 const BootstrapDialog = styled(Dialog)`
 
   & .MuiDialog-paper {
+    z-index: 10000;
     width: 800px;
     height: 400px;
 

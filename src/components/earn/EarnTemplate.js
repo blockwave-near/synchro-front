@@ -292,13 +292,13 @@ function Earn() {
                     <TopSpacer/>
                     <Row style={{justifySelf: 'end', alignSelf: 'end'}}>
                         <Spacer/>
-                        <DepositModal/>
+                        <DepositModal Balance={10}/>
                         {/*<CommonButton back={false}>*/}
                         {/*    Deposit*/}
                         {/*</CommonButton>*/}
 
                         <SizeBox w={30}/>
-                        <WithdrawModal/>
+                        <WithdrawModal Balance={20}/>
                         {/*<CommonButton back={false}>*/}
                         {/*    Withdraw*/}
                         {/*</CommonButton>*/}

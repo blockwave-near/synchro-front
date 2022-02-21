@@ -88,7 +88,7 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-function DepositModal() {
+function DepositModal(props) {
     const [open, setOpen] = useState(false);
     const [txValue, setTxValue] = useState(3.678);
     const [receiveValue, setReceiveValue] = useState(103.678);
@@ -122,6 +122,7 @@ function DepositModal() {
                 </StyledBootstrapDialogTitle>
                 <StyledBootstrapDialogContent>
                     <InputField FormHelperTop="Amount" FormHelperBottom="Wallet" Unit="USDT"
+                                Balance={props.Balance}
                                 isFormHelper={true}/>
                     <TextContainer style={{marginTop:"35px"}}>
                         <p>Tx Fee</p>

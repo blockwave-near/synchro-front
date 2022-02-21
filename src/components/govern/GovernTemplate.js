@@ -245,7 +245,7 @@ const USDTIn = styled(USDT)`
   position: absolute;
   left: 76px;
   top: 20px;
-  z-index: 10000;
+  z-index: 500;
 `;
 
 const Row = styled.div`
