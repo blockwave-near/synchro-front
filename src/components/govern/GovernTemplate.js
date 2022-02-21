@@ -9,6 +9,10 @@ import CommonButton from "../common/CommonButton";
 import Chip from "../common/Chip";
 import LinePercent from "../common/LinePercent";
 import {login, logout} from "../../utils";
+import ComingSoonModal from "../common/modal/ComingSoonModal";
+import TradeSyncModal from "../common/modal/TradeSyncModal";
+import GovStakeModal from "../common/modal/GovStakeModal";
+import CreatePollModal from "../common/modal/CreatePollModal";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -22,7 +26,7 @@ const Container = styled.div`
 `;
 
 const CardSideContainer = styled.div`
-  height: 350px;
+  height: 400px;
   display: flex;
   margin-top: 21px;
 `
@@ -363,14 +367,13 @@ function Govern() {
 
                     <SizeBox h={34}/>
                     <Row center={true}>
-                        <CommonButton back={true}>
-                            Trade SYNC
-                        </CommonButton>
+                        <TradeSyncModal back={true} title={'Trade SYNC'}/>
                         <SizeBox w={30}/>
-                        <CommonButton back={true}>
-                            Gov Stake
-                        </CommonButton>
+                        <GovStakeModal back={true} title={'Gov Stake'}/>
                     </Row>
+
+                    <SizeBox h={20}/>
+                    <ComingSoonModal back={true} title={'Lockup Sync'}/>
                 </SecondCardContainer>
 
                 <ThirdCardContainer>
@@ -396,7 +399,7 @@ function Govern() {
                         <SizeBox w={40}/>
                         <Col>
                             <Chip>
-                                APR
+                                Total Staked
                             </Chip>
                             <SizeBox h={5}/>
                             <Number>
@@ -413,9 +416,7 @@ function Govern() {
                     Polls
                 </SubTitleTextContainer>
                 <Spacer/>
-                <CommonButton>
-                    Create Poll
-                </CommonButton>
+                <CreatePollModal back={false} title={'Create Poll'}/>
             </Row>
 
             <PollContainer>
@@ -456,8 +457,6 @@ function Govern() {
                         </Row>
                     </PollCardContainer>
                 })}
-                <SizeBox h={100}/>
-                <SizeBox h={100}/>
             </PollContainer>
         </Container>
     );

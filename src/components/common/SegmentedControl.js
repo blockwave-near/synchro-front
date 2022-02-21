@@ -43,7 +43,7 @@ const Tab = styled(TabUnstyled)`
 `;
 
 const TabsList = styled(TabsListUnstyled)`
-  width: ${(props) => (props.fullWidth ? '100%' : props.width ?? '100%')};
+  width: ${(props) => (props.fullWidth ? '100%' : props.w ?? '100%')};
   height: 36px;
   background-color: ${purple[200]};
   border-radius: 20px;
@@ -74,7 +74,7 @@ function SegmentedControl(props) {
 
     return (
         <TabsUnstyled defaultValue={0} onChange={handleChange}>
-            <TabsList >
+            <TabsList fullWidth={false} width={props.w}>
                 {typeof newArray[0][0] === 'string' &&
                     <Tab>{newArray[0][0]}</Tab>
                 }

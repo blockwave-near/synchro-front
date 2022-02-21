@@ -70,7 +70,7 @@ const StyledFormHelperText = styled(FormHelperText)`
   }
 `
 
-function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper, Balance, inputRef}) {
+function InputField({ FormHelperTop, FormHelperBottom, Unit, isFormHelper,  Balance, inputRef}) {
     const [values, setValues] = useState(0);
 
 

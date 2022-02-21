@@ -9,6 +9,7 @@ import Slider from "components/common/Slider";
 import Card from "components/borrow/borrowBoard";
 import DepositModal from "components/common/modal/DepositModal";
 import InputField from "components/common/InputField";
+import ComingSoonModal from "../components/common/modal/ComingSoonModal";
 
 const Container = styled.div`
   height: 100%;
@@ -35,6 +36,7 @@ function Components() {
                 through the convert operation to be used as collateral on Anchor. </TransitionAlerts>
             <Card>2127</Card>
             <DepositModal/>
+            <ComingSoonModal title={'Withdraw'}/>
             <InputField/>
         </Container>
     );

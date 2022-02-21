@@ -8,7 +8,7 @@ const ChipTag = styled(ChipComponent)`
   justify-content: center;
   align-items: center;
 
-  width: 71px;
+  width: max-content;
   height: 26px;
 
   background: ${props => props.black ? '#222222' : '#FFFFFF'};
