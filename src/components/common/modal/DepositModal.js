@@ -102,7 +102,7 @@ function DepositModal(props) {
     };
 
     const handleProceed = () => {
-        const amount = 0.00001;
+        const amount = '0.00001';
 
         window.bnearStaking.deposit_and_stake({}, "300000000000000", utils.format.parseNearAmount(amount))
             .then(() => window.modalOpen = true);
