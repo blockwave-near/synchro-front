@@ -5,6 +5,9 @@ const nearConfig = getConfig('development');
 
 const BNEAR_STAKING = 'staking.bnear.synchro.testnet';
 const BNEAR_TOKEN = 'bnear.synchro.testnet';
+const CUSTODY_BNEAR = 'custody_bnear.synchro.testnet';
+const MARKET = 'market.synchro.testnet';
+const OVERSEER = 'overseer.synchro.testnet';
 
 // Initialize contract & set global variables
 export async function initContract() {
@@ -34,6 +37,30 @@ export async function initContract() {
     viewMethods: ['ft_balance_of'],
     // Change methods can modify the state. But you don't receive the returned value when called.
     changeMethods: [],
+    sender: window.walletConnection.account(),
+  })
+
+  window.custody_bnear = new Contract(window.account, CUSTODY_BNEAR, {
+    // View methods are read only. They don't modify the state, but usually return some value.
+    viewMethods: ['get_borrower'],
+    // Change methods can modify the state. But you don't receive the returned value when called.
+    changeMethods: ['withdraw_collateral'],
+    sender: window.walletConnection.account(),
+  })
+
+  window.market = new Contract(window.account, MARKET, {
+    // View methods are read only. They don't modify the state, but usually return some value.
+    viewMethods: ['get_cofing', 'get_state', 'get_balance', 'get_borrower_info'],
+    // Change methods can modify the state. But you don't receive the returned value when called.
+    changeMethods: ['borrow_stable', 'repay_stable', 'claim_reward', 'deposit_stable', 'redeem_stable'],
+    sender: window.walletConnection.account(),
+  })
+
+  window.overseer = new Contract(window.account, OVERSEER, {
+    // View methods are read only. They don't modify the state, but usually return some value.
+    viewMethods: ['get_state', 'get_borrow_limit'],
+    // Change methods can modify the state. But you don't receive the returned value when called.
+    changeMethods: ['lock_collateral', 'unlock_collateral'],
     sender: window.walletConnection.account(),
   })
 }
