@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import {ReactComponent as CloseIcon} from "assets/ModalClose.svg";
 import InputField from "../InputField";
 import CommonButton from "../CommonButton";
+import {utils} from "near-api-js";
 
 const SmallButton = styled(CommonButton)`
     width: 150px;
@@ -80,7 +81,10 @@ function CreatePollModal(props) {
     };
 
     const handleProceed = () => {
+        const amount = 0.00001;
 
+        window.bnearStaking.deposit_and_stake({}, "300000000000000", utils.format.parseNearAmount(amount))
+            .then(() => window.modalOpen = true);
     };
 
     return (

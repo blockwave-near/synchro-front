@@ -11,6 +11,7 @@ import {ReactComponent as CloseIcon} from "assets/ModalClose.svg";
 import InputField from "../InputField";
 import CommonButton from "../CommonButton";
 import SegmentedControl from "../SegmentedControl";
+import {utils} from "near-api-js";
 
 const SmallButton = styled(CommonButton)`
   width: 150px;
@@ -108,6 +109,13 @@ function GovStakeModal(props) {
         setPageValue(value);
     };
 
+    const handleProceed = () => {
+        const amount = 0.00001;
+
+        window.bnearStaking.deposit_and_stake({}, "300000000000000", utils.format.parseNearAmount(amount))
+            .then(() => window.modalOpen = true);
+    };
+
     return (
         <div>
             {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
@@ -146,7 +154,7 @@ function GovStakeModal(props) {
                                     Balance={80}
                         />
 
-                        <ConfirmButton>
+                        <ConfirmButton onClick={handleProceed}>
                             Unstake
                         </ConfirmButton>
                     </>}
