@@ -32,7 +32,7 @@ const CardContainer = styled('div')`
 `;
 
 const CardSideContainer = styled('div')`
-  height: 100%;
+  height: 750px;
   display: flex;
 `
 
@@ -406,7 +406,7 @@ function Basset() {
                                 <p>{exchangeRate}</p>
                             </PriceTextContainer> */}
 
-                            <MintButton onClick={handleBurn}>BURN</MintButton>
+                            <MintButton style={{alignSelf: 'end'}} onClick={handleBurn}>BURN</MintButton>
                         </>
                     }
                 </SecondCardContainer>

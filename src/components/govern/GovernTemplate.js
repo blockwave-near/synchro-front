@@ -9,6 +9,7 @@ import CommonButton from "../common/CommonButton";
 import Chip from "../common/Chip";
 import LinePercent from "../common/LinePercent";
 import {login, logout} from "../../utils";
+import ComingSoonModal from "../common/modal/ComingSoonModal";
 
 const StyledLink = styled(LinkMark)`
   margin: 0 0 7px 5px;
@@ -22,7 +23,7 @@ const Container = styled.div`
 `;
 
 const CardSideContainer = styled.div`
-  height: 350px;
+  height: 400px;
   display: flex;
   margin-top: 21px;
 `
@@ -275,30 +276,6 @@ const pollList = [
         rate: 40,
         end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
     },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 20,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 54,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 12,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
-    {
-        state: "In Progress",
-        title: "Redirect portion of borrower incentives SYNC-LP Rewards",
-        rate: 86,
-        end_time: "Sun, Feb 13, 2022, 8:29:13 AM"
-    },
 ];
 
 function Govern() {
@@ -317,10 +294,6 @@ function Govern() {
         logout();
         // console.log('Disconnect Button Click');
     };
-
-    useEffect(() => {
-       // 새로고침마다 변수 값 리로딩 하는 함수 넣으시면 됩니다.
-    });
 
     return (
         <Container>
@@ -399,6 +372,9 @@ function Govern() {
                             Gov Stake
                         </CommonButton>
                     </Row>
+
+                    <SizeBox h={20}/>
+                    <ComingSoonModal back={true} title={'Lockup Sync'}/>
                 </SecondCardContainer>
 
                 <ThirdCardContainer>
